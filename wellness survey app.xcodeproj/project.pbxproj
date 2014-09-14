@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7500D56719C0C60D003CF1E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D56619C0C60D003CF1E2 /* Foundation.framework */; };
+		7500D56919C0C60D003CF1E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D56819C0C60D003CF1E2 /* CoreGraphics.framework */; };
+		7500D56B19C0C60D003CF1E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D56A19C0C60D003CF1E2 /* UIKit.framework */; };
+		7500D57119C0C60D003CF1E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7500D56F19C0C60D003CF1E2 /* InfoPlist.strings */; };
+		7500D57319C0C60D003CF1E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D57219C0C60D003CF1E2 /* main.m */; };
+		7500D57719C0C60D003CF1E2 /* XYZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D57619C0C60D003CF1E2 /* XYZAppDelegate.m */; };
+		7500D57919C0C60D003CF1E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7500D57819C0C60D003CF1E2 /* Images.xcassets */; };
+		7500D58019C0C60D003CF1E2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D57F19C0C60D003CF1E2 /* XCTest.framework */; };
+		7500D58119C0C60D003CF1E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D56619C0C60D003CF1E2 /* Foundation.framework */; };
+		7500D58219C0C60D003CF1E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D56A19C0C60D003CF1E2 /* UIKit.framework */; };
+		7500D58A19C0C60D003CF1E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7500D58819C0C60D003CF1E2 /* InfoPlist.strings */; };
+		7500D58C19C0C60D003CF1E2 /* wellness_survey_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D58B19C0C60D003CF1E2 /* wellness_survey_appTests.m */; };
+		7500D59619C0C619003CF1E2 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7500D59519C0C619003CF1E2 /* main.storyboard */; };
+		7500D59819C0C64A003CF1E2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59719C0C64A003CF1E2 /* Parse.framework */; };
+		7500D59A19C0C660003CF1E2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59919C0C660003CF1E2 /* Bolts.framework */; };
+		7500D5A419C0C6AD003CF1E2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59B19C0C6AD003CF1E2 /* AudioToolbox.framework */; };
+		7500D5A519C0C6AD003CF1E2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59C19C0C6AD003CF1E2 /* CFNetwork.framework */; };
+		7500D5A619C0C6AD003CF1E2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59D19C0C6AD003CF1E2 /* CoreLocation.framework */; };
+		7500D5A719C0C6AD003CF1E2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59E19C0C6AD003CF1E2 /* libz.dylib */; };
+		7500D5A819C0C6AD003CF1E2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D59F19C0C6AD003CF1E2 /* MobileCoreServices.framework */; };
+		7500D5A919C0C6AD003CF1E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A019C0C6AD003CF1E2 /* QuartzCore.framework */; };
+		7500D5AA19C0C6AD003CF1E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A119C0C6AD003CF1E2 /* Security.framework */; };
+		7500D5AB19C0C6AD003CF1E2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A219C0C6AD003CF1E2 /* StoreKit.framework */; };
+		7500D5AC19C0C6AD003CF1E2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A319C0C6AD003CF1E2 /* SystemConfiguration.framework */; };
+		7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */; };
+		7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */; };
+		7564DB6B19C327A60033C6FC /* XYZfirstwindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7500D58319C0C60D003CF1E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7500D55B19C0C60D003CF1E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7500D56219C0C60D003CF1E2;
+			remoteInfo = "wellness survey app";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7500D56319C0C60D003CF1E2 /* wellness survey app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wellness survey app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7500D56619C0C60D003CF1E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7500D56819C0C60D003CF1E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7500D56A19C0C60D003CF1E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7500D56E19C0C60D003CF1E2 /* wellness survey app-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "wellness survey app-Info.plist"; sourceTree = "<group>"; };
+		7500D57019C0C60D003CF1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7500D57219C0C60D003CF1E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7500D57419C0C60D003CF1E2 /* wellness survey app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wellness survey app-Prefix.pch"; sourceTree = "<group>"; };
+		7500D57519C0C60D003CF1E2 /* XYZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYZAppDelegate.h; sourceTree = "<group>"; };
+		7500D57619C0C60D003CF1E2 /* XYZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYZAppDelegate.m; sourceTree = "<group>"; };
+		7500D57819C0C60D003CF1E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7500D57E19C0C60D003CF1E2 /* wellness survey appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wellness survey appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7500D57F19C0C60D003CF1E2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7500D58719C0C60D003CF1E2 /* wellness survey appTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "wellness survey appTests-Info.plist"; sourceTree = "<group>"; };
+		7500D58919C0C60D003CF1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7500D58B19C0C60D003CF1E2 /* wellness_survey_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wellness_survey_appTests.m; sourceTree = "<group>"; };
+		7500D59519C0C619003CF1E2 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		7500D59719C0C64A003CF1E2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		7500D59919C0C660003CF1E2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		7500D59B19C0C6AD003CF1E2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7500D59C19C0C6AD003CF1E2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7500D59D19C0C6AD003CF1E2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7500D59E19C0C6AD003CF1E2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7500D59F19C0C6AD003CF1E2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7500D5A019C0C6AD003CF1E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7500D5A119C0C6AD003CF1E2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7500D5A219C0C6AD003CF1E2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7500D5A319C0C6AD003CF1E2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsignupViewController.h; sourceTree = "<group>"; };
+		7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsignupViewController.m; sourceTree = "<group>"; };
+		7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZloginViewController.h; sourceTree = "<group>"; };
+		7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZloginViewController.m; sourceTree = "<group>"; };
+		7564DB6919C327A60033C6FC /* XYZfirstwindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZfirstwindowViewController.h; sourceTree = "<group>"; };
+		7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZfirstwindowViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7500D56019C0C60D003CF1E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7500D5A419C0C6AD003CF1E2 /* AudioToolbox.framework in Frameworks */,
+				7500D5A519C0C6AD003CF1E2 /* CFNetwork.framework in Frameworks */,
+				7500D5A619C0C6AD003CF1E2 /* CoreLocation.framework in Frameworks */,
+				7500D5A719C0C6AD003CF1E2 /* libz.dylib in Frameworks */,
+				7500D5A819C0C6AD003CF1E2 /* MobileCoreServices.framework in Frameworks */,
+				7500D5A919C0C6AD003CF1E2 /* QuartzCore.framework in Frameworks */,
+				7500D5AA19C0C6AD003CF1E2 /* Security.framework in Frameworks */,
+				7500D5AB19C0C6AD003CF1E2 /* StoreKit.framework in Frameworks */,
+				7500D5AC19C0C6AD003CF1E2 /* SystemConfiguration.framework in Frameworks */,
+				7500D56919C0C60D003CF1E2 /* CoreGraphics.framework in Frameworks */,
+				7500D59A19C0C660003CF1E2 /* Bolts.framework in Frameworks */,
+				7500D56B19C0C60D003CF1E2 /* UIKit.framework in Frameworks */,
+				7500D59819C0C64A003CF1E2 /* Parse.framework in Frameworks */,
+				7500D56719C0C60D003CF1E2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7500D57B19C0C60D003CF1E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7500D58019C0C60D003CF1E2 /* XCTest.framework in Frameworks */,
+				7500D58219C0C60D003CF1E2 /* UIKit.framework in Frameworks */,
+				7500D58119C0C60D003CF1E2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7500D55A19C0C60D003CF1E2 = {
+			isa = PBXGroup;
+			children = (
+				7564DB6919C327A60033C6FC /* XYZfirstwindowViewController.h */,
+				7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */,
+				7500D59519C0C619003CF1E2 /* main.storyboard */,
+				7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */,
+				7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */,
+				7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */,
+				7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */,
+				7500D56C19C0C60D003CF1E2 /* wellness survey app */,
+				7500D58519C0C60D003CF1E2 /* wellness survey appTests */,
+				7500D56519C0C60D003CF1E2 /* Frameworks */,
+				7500D56419C0C60D003CF1E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7500D56419C0C60D003CF1E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7500D56319C0C60D003CF1E2 /* wellness survey app.app */,
+				7500D57E19C0C60D003CF1E2 /* wellness survey appTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7500D56519C0C60D003CF1E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7500D59B19C0C6AD003CF1E2 /* AudioToolbox.framework */,
+				7500D59C19C0C6AD003CF1E2 /* CFNetwork.framework */,
+				7500D59D19C0C6AD003CF1E2 /* CoreLocation.framework */,
+				7500D59E19C0C6AD003CF1E2 /* libz.dylib */,
+				7500D59F19C0C6AD003CF1E2 /* MobileCoreServices.framework */,
+				7500D5A019C0C6AD003CF1E2 /* QuartzCore.framework */,
+				7500D5A119C0C6AD003CF1E2 /* Security.framework */,
+				7500D5A219C0C6AD003CF1E2 /* StoreKit.framework */,
+				7500D5A319C0C6AD003CF1E2 /* SystemConfiguration.framework */,
+				7500D59919C0C660003CF1E2 /* Bolts.framework */,
+				7500D59719C0C64A003CF1E2 /* Parse.framework */,
+				7500D56619C0C60D003CF1E2 /* Foundation.framework */,
+				7500D56819C0C60D003CF1E2 /* CoreGraphics.framework */,
+				7500D56A19C0C60D003CF1E2 /* UIKit.framework */,
+				7500D57F19C0C60D003CF1E2 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7500D56C19C0C60D003CF1E2 /* wellness survey app */ = {
+			isa = PBXGroup;
+			children = (
+				7500D57519C0C60D003CF1E2 /* XYZAppDelegate.h */,
+				7500D57619C0C60D003CF1E2 /* XYZAppDelegate.m */,
+				7500D57819C0C60D003CF1E2 /* Images.xcassets */,
+				7500D56D19C0C60D003CF1E2 /* Supporting Files */,
+			);
+			path = "wellness survey app";
+			sourceTree = "<group>";
+		};
+		7500D56D19C0C60D003CF1E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7500D56E19C0C60D003CF1E2 /* wellness survey app-Info.plist */,
+				7500D56F19C0C60D003CF1E2 /* InfoPlist.strings */,
+				7500D57219C0C60D003CF1E2 /* main.m */,
+				7500D57419C0C60D003CF1E2 /* wellness survey app-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7500D58519C0C60D003CF1E2 /* wellness survey appTests */ = {
+			isa = PBXGroup;
+			children = (
+				7500D58B19C0C60D003CF1E2 /* wellness_survey_appTests.m */,
+				7500D58619C0C60D003CF1E2 /* Supporting Files */,
+			);
+			path = "wellness survey appTests";
+			sourceTree = "<group>";
+		};
+		7500D58619C0C60D003CF1E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7500D58719C0C60D003CF1E2 /* wellness survey appTests-Info.plist */,
+				7500D58819C0C60D003CF1E2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7500D56219C0C60D003CF1E2 /* wellness survey app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7500D58F19C0C60D003CF1E2 /* Build configuration list for PBXNativeTarget "wellness survey app" */;
+			buildPhases = (
+				7500D55F19C0C60D003CF1E2 /* Sources */,
+				7500D56019C0C60D003CF1E2 /* Frameworks */,
+				7500D56119C0C60D003CF1E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "wellness survey app";
+			productName = "wellness survey app";
+			productReference = 7500D56319C0C60D003CF1E2 /* wellness survey app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7500D57D19C0C60D003CF1E2 /* wellness survey appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7500D59219C0C60D003CF1E2 /* Build configuration list for PBXNativeTarget "wellness survey appTests" */;
+			buildPhases = (
+				7500D57A19C0C60D003CF1E2 /* Sources */,
+				7500D57B19C0C60D003CF1E2 /* Frameworks */,
+				7500D57C19C0C60D003CF1E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7500D58419C0C60D003CF1E2 /* PBXTargetDependency */,
+			);
+			name = "wellness survey appTests";
+			productName = "wellness survey appTests";
+			productReference = 7500D57E19C0C60D003CF1E2 /* wellness survey appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7500D55B19C0C60D003CF1E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = XYZ;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "xinyi wang";
+				TargetAttributes = {
+					7500D57D19C0C60D003CF1E2 = {
+						TestTargetID = 7500D56219C0C60D003CF1E2;
+					};
+				};
+			};
+			buildConfigurationList = 7500D55E19C0C60D003CF1E2 /* Build configuration list for PBXProject "wellness survey app" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7500D55A19C0C60D003CF1E2;
+			productRefGroup = 7500D56419C0C60D003CF1E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7500D56219C0C60D003CF1E2 /* wellness survey app */,
+				7500D57D19C0C60D003CF1E2 /* wellness survey appTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7500D56119C0C60D003CF1E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7500D57119C0C60D003CF1E2 /* InfoPlist.strings in Resources */,
+				7500D59619C0C619003CF1E2 /* main.storyboard in Resources */,
+				7500D57919C0C60D003CF1E2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7500D57C19C0C60D003CF1E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7500D58A19C0C60D003CF1E2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7500D55F19C0C60D003CF1E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7500D57719C0C60D003CF1E2 /* XYZAppDelegate.m in Sources */,
+				7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */,
+				7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */,
+				7500D57319C0C60D003CF1E2 /* main.m in Sources */,
+				7564DB6B19C327A60033C6FC /* XYZfirstwindowViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7500D57A19C0C60D003CF1E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7500D58C19C0C60D003CF1E2 /* wellness_survey_appTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7500D58419C0C60D003CF1E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7500D56219C0C60D003CF1E2 /* wellness survey app */;
+			targetProxy = 7500D58319C0C60D003CF1E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7500D56F19C0C60D003CF1E2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7500D57019C0C60D003CF1E2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7500D58819C0C60D003CF1E2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7500D58919C0C60D003CF1E2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7500D58D19C0C60D003CF1E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7500D58E19C0C60D003CF1E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7500D59019C0C60D003CF1E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wellness survey app/wellness survey app-Prefix.pch";
+				INFOPLIST_FILE = "wellness survey app/wellness survey app-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7500D59119C0C60D003CF1E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wellness survey app/wellness survey app-Prefix.pch";
+				INFOPLIST_FILE = "wellness survey app/wellness survey app-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7500D59319C0C60D003CF1E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/wellness survey app.app/wellness survey app";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wellness survey app/wellness survey app-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "wellness survey appTests/wellness survey appTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7500D59419C0C60D003CF1E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/wellness survey app.app/wellness survey app";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wellness survey app/wellness survey app-Prefix.pch";
+				INFOPLIST_FILE = "wellness survey appTests/wellness survey appTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7500D55E19C0C60D003CF1E2 /* Build configuration list for PBXProject "wellness survey app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7500D58D19C0C60D003CF1E2 /* Debug */,
+				7500D58E19C0C60D003CF1E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7500D58F19C0C60D003CF1E2 /* Build configuration list for PBXNativeTarget "wellness survey app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7500D59019C0C60D003CF1E2 /* Debug */,
+				7500D59119C0C60D003CF1E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7500D59219C0C60D003CF1E2 /* Build configuration list for PBXNativeTarget "wellness survey appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7500D59319C0C60D003CF1E2 /* Debug */,
+				7500D59419C0C60D003CF1E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7500D55B19C0C60D003CF1E2 /* Project object */;
+}
