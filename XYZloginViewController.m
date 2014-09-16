@@ -24,6 +24,8 @@
        block:^(PFUser *user, NSError *error) {
       if (user) {
           // Do stuff after successful login.
+          _userName.text = nil;
+          _password.text = nil;
           [self performSegueWithIdentifier:@"successLogin" sender:self];
      } else {
      // The login failed. Check error to see why.

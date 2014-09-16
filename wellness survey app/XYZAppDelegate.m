@@ -16,7 +16,9 @@
     [Parse setApplicationId:@"7y3hW9Gibahq2gCpaTd5TfTH3xlrSao2PCleXr9E"
                   clientKey:@"qVUTlfmiQatz6EvU1gqUBsDqzgO3ajcAGhbXpj4Q"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-      
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+     UIRemoteNotificationTypeAlert|
+     UIRemoteNotificationTypeSound];
     
     return YES;
 }
@@ -47,5 +49,20 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
 
 @end
