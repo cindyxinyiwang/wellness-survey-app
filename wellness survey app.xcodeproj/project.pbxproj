@@ -34,6 +34,9 @@
 		7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */; };
 		7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */; };
 		7564DB6B19C327A60033C6FC /* XYZfirstwindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */; };
+		7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */; };
+		7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7619CC97EA0033C6FC /* XYZquestion.m */; };
+		7564DB7A19CC97FE0033C6FC /* XYZquestions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7919CC97FE0033C6FC /* XYZquestions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,12 @@
 		7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZloginViewController.m; sourceTree = "<group>"; };
 		7564DB6919C327A60033C6FC /* XYZfirstwindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZfirstwindowViewController.h; sourceTree = "<group>"; };
 		7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZfirstwindowViewController.m; sourceTree = "<group>"; };
+		7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewController.h; sourceTree = "<group>"; };
+		7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsurveyListTableViewController.m; sourceTree = "<group>"; };
+		7564DB7519CC97EA0033C6FC /* XYZquestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZquestion.h; sourceTree = "<group>"; };
+		7564DB7619CC97EA0033C6FC /* XYZquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestion.m; sourceTree = "<group>"; };
+		7564DB7819CC97FE0033C6FC /* XYZquestions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZquestions.h; sourceTree = "<group>"; };
+		7564DB7919CC97FE0033C6FC /* XYZquestions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +133,13 @@
 				7564DB6919C327A60033C6FC /* XYZfirstwindowViewController.h */,
 				7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */,
 				7500D59519C0C619003CF1E2 /* main.storyboard */,
+				7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */,
+				7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */,
 				7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */,
 				7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */,
 				7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */,
 				7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */,
+				7564DB7B19CC980B0033C6FC /* question modal */,
 				7500D56C19C0C60D003CF1E2 /* wellness survey app */,
 				7500D58519C0C60D003CF1E2 /* wellness survey appTests */,
 				7500D56519C0C60D003CF1E2 /* Frameworks */,
@@ -206,6 +218,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7564DB7B19CC980B0033C6FC /* question modal */ = {
+			isa = PBXGroup;
+			children = (
+				7564DB7519CC97EA0033C6FC /* XYZquestion.h */,
+				7564DB7619CC97EA0033C6FC /* XYZquestion.m */,
+				7564DB7819CC97FE0033C6FC /* XYZquestions.h */,
+				7564DB7919CC97FE0033C6FC /* XYZquestions.m */,
+			);
+			name = "question modal";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,6 +277,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "xinyi wang";
 				TargetAttributes = {
+					7500D56219C0C60D003CF1E2 = {
+						DevelopmentTeam = 47J734W9F8;
+					};
 					7500D57D19C0C60D003CF1E2 = {
 						TestTargetID = 7500D56219C0C60D003CF1E2;
 					};
@@ -304,10 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7500D57719C0C60D003CF1E2 /* XYZAppDelegate.m in Sources */,
+				7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */,
 				7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */,
 				7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */,
 				7500D57319C0C60D003CF1E2 /* main.m in Sources */,
 				7564DB6B19C327A60033C6FC /* XYZfirstwindowViewController.m in Sources */,
+				7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */,
+				7564DB7A19CC97FE0033C6FC /* XYZquestions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +453,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -432,6 +463,7 @@
 				GCC_PREFIX_HEADER = "wellness survey app/wellness survey app-Prefix.pch";
 				INFOPLIST_FILE = "wellness survey app/wellness survey app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -441,6 +473,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -449,6 +483,7 @@
 				GCC_PREFIX_HEADER = "wellness survey app/wellness survey app-Prefix.pch";
 				INFOPLIST_FILE = "wellness survey app/wellness survey app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

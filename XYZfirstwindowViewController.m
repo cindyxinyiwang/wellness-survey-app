@@ -7,9 +7,11 @@
 //
 
 #import "XYZfirstwindowViewController.h"
-
+#import <Parse/Parse.h>
 
 @interface XYZfirstwindowViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
 @end
 
@@ -34,6 +36,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.hidesBackButton = YES;
+    // Query the question in database
+    PFQuery *question = [PFQuery queryWithClassName:@"SurveyQuestion"];
+    [question whereKey:@"index" equalTo:@1];
+    [question findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            //The find succeeded
+            NSLog(@"Successfully retrieved question %d", objects.count);
+            for (PFObject *object in objects) {
+                NSString *question = [object objectForKey:@"Question"];
+                NSLog(@"%@", question);
+                _questionLabel.text = question;
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
