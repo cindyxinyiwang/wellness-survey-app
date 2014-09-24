@@ -37,6 +37,7 @@
 		7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */; };
 		7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7619CC97EA0033C6FC /* XYZquestion.m */; };
 		7564DB7A19CC97FE0033C6FC /* XYZquestions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7919CC97FE0033C6FC /* XYZquestions.m */; };
+		75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		7564DB7619CC97EA0033C6FC /* XYZquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestion.m; sourceTree = "<group>"; };
 		7564DB7819CC97FE0033C6FC /* XYZquestions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZquestions.h; sourceTree = "<group>"; };
 		7564DB7919CC97FE0033C6FC /* XYZquestions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestions.m; sourceTree = "<group>"; };
+		75C1AF2C19D11C7C004F9B65 /* XYZsurveyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewCell.h; sourceTree = "<group>"; };
+		75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsurveyListTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				7564DB6919C327A60033C6FC /* XYZfirstwindowViewController.h */,
 				7564DB6A19C327A60033C6FC /* XYZfirstwindowViewController.m */,
 				7500D59519C0C619003CF1E2 /* main.storyboard */,
+				75C1AF2C19D11C7C004F9B65 /* XYZsurveyListTableViewCell.h */,
+				75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */,
 				7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */,
 				7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */,
 				7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */,
@@ -332,6 +337,7 @@
 				7500D57719C0C60D003CF1E2 /* XYZAppDelegate.m in Sources */,
 				7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */,
 				7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */,
+				75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */,
 				7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */,
 				7500D57319C0C60D003CF1E2 /* main.m in Sources */,
 				7564DB6B19C327A60033C6FC /* XYZfirstwindowViewController.m in Sources */,

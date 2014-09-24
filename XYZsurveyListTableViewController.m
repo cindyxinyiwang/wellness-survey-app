@@ -8,6 +8,7 @@
 
 #import "XYZsurveyListTableViewController.h"
 #import "XYZquestions.h"
+#import "XYZsurveyListTableViewCell.h"
 #import <Parse/Parse.h>
 
 @interface XYZsurveyListTableViewController ()
@@ -69,7 +70,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
+    XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
     
     PFQuery *question = [PFQuery queryWithClassName:@"SurveyQuestion"];
     
@@ -89,8 +90,8 @@
     
     // Configure the cell...
     NSInteger questionNumber = self.questions[indexPath.row].questionNumber;
-    cell.textLabel.text = [NSString stringWithFormat:@"Question %d", questionNumber];
-    cell.detailTextLabel.text = self.questions[indexPath.row].questionCategory;
+    cell.questionNumberLabel.text = [NSString stringWithFormat:@"Question %d", questionNumber];
+    cell.questionCategoryLabel.text = self.questions[indexPath.row].questionCategory;
     return cell;
 }
 
