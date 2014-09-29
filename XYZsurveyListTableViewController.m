@@ -7,21 +7,15 @@
 //
 
 #import "XYZsurveyListTableViewController.h"
-#import "XYZquestions.h"
 #import "XYZsurveyListTableViewCell.h"
+#import "XYZdetailQuestionTableViewController.h"
 #import <Parse/Parse.h>
 
 @interface XYZsurveyListTableViewController ()
-@property (strong, nonatomic) XYZquestions *questions;
+@property (strong, nonatomic) NSArray *questionEntries;
 @end
 
 @implementation XYZsurveyListTableViewController
-- (XYZquestions *)questions {
-    if (!_questions) {
-        _questions = [[XYZquestions alloc] init];
-    }
-    return _questions;
-}
 
 - (IBAction)logOff:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -45,6 +39,16 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    PFQuery *query = [PFQuery queryWithClassName:@"SurveyQuestion"];
+    [query orderByAscending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error){
+            
+        } else {
+            self.questionEntries = objects;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,34 +68,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.questions count];
+    return [self.questionEntries count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
-    
-    PFQuery *question = [PFQuery queryWithClassName:@"SurveyQuestion"];
-    
-    /* just for testing purpose. Problem with Parse's asynchronized queries
-    [question findObjectsInBackgroundWithBlock:^(NSArray *qs, NSError *error){
-        if (!error) {
-            //The find succeeded
-            NSLog(@"Successfully retrieved question %d", qs.count);
-            for (PFObject *q in qs) {
-                //cell.detailTextLabel.text = [q objectForKey:@"Question"];
-            }
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-     */
-    
-    // Configure the cell...
-    NSInteger questionNumber = self.questions[indexPath.row].questionNumber;
-    cell.questionNumberLabel.text = [NSString stringWithFormat:@"Question %d", questionNumber];
-    cell.questionCategoryLabel.text = self.questions[indexPath.row].questionCategory;
+ 
+    NSString *questionNumber = [self.questionEntries[indexPath.row] objectForKey:@"index"];
+    NSString *question = [self.questionEntries[indexPath.row] objectForKey:@"Question"];
+    cell.questionNumberLabel.text = questionNumber;
+    cell.questionCategoryLabel.text = question;
     return cell;
 }
 
@@ -134,7 +122,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -142,7 +130,11 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
+    NSInteger rowNumber = [self.tableView indexPathForSelectedRow].row;
+    questionVC.question = [self.questionEntries[rowNumber] objectForKey:@"Question"];
+    questionVC.questionIndex = [self.questionEntries[rowNumber] objectForKey:@"index"];
 }
-*/
+
 
 @end

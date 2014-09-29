@@ -15,19 +15,34 @@
 
 @implementation XYZquestions
 
+
 -(NSArray *)getObjectsFromParse{
     NSMutableArray *questionArray = [NSMutableArray array];
     // Query the question in database
     
     PFQuery *question = [PFQuery queryWithClassName:@"SurveyQuestion"];
+ 
     NSArray *questionEntries = [question findObjects];
     for (PFObject *qs in questionEntries) {
         NSString *q = [qs objectForKey:@"Question"];
         [questionArray addObject:q];
     }
     NSArray *array = [questionArray copy];
+ 
+    /*
+    NSInteger counter = [question countObjects];
+    NSNumber *i = @1;
+    while ([i intValue] <= counter){
+        [question whereKey:@"index" equalTo:i];
+        NSString *q = [question objectForKey:@"Question"]
+        [questionArray addObject:q];
+        i = [NSNumber numberWithInt:[i intValue]+1];
+    }
+    NSArray *array = [questionArray copy];
+     */
     return array;
 }
+
 
 - (NSArray *)privateListOfQuestions{
     if(!_privateListOfQuestions) {
