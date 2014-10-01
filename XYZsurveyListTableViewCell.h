@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XYZsurveyListTableViewCell : UITableViewCell
-@property (weak,nonatomic) IBOutlet UILabel *questionNumberLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *questionCategoryLabel;
 
 @end

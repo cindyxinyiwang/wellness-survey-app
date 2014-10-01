@@ -132,7 +132,7 @@
     }
     NSString *questionNumber = [self.questionEntries[indexPath.row] objectForKey:@"index"];
 
-    cell.questionNumberLabel.text = questionNumber;
+
     cell.questionCategoryLabel.text = aspects[indexPath.row];
     return cell;
 }
