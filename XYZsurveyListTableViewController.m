@@ -13,6 +13,12 @@
 
 @interface XYZsurveyListTableViewController ()
 @property (strong, nonatomic) NSArray *questionEntries;
+@property (strong, nonatomic) NSArray *categories;
+////////////////////////
+//problems:
+//1. how to set up a dictionary of the data stored in Parse(given the fact that findObject is synchronized and block main thread)
+//2. when one of the entries is not defined, it gives and error (could define set up at the web end)
+@property (strong, nonatomic) NSMutableDictionary *typeQuestionPair;
 @end
 
 @implementation XYZsurveyListTableViewController
@@ -49,6 +55,30 @@
             [self.tableView reloadData];
         }
     }];
+    PFQuery *queryCategory = [PFQuery queryWithClassName:@"Category"];
+    [queryCategory findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error){
+            
+        } else {
+            self.categories = objects;
+            [self.tableView reloadData];
+            
+
+        }
+    }];
+
+    for (PFObject *q in self.categories){
+        NSString *categoryName = [q objectForKey:@"type"];
+        NSMutableArray *aspects = [[NSMutableArray alloc] init];
+        for (PFObject *entry in self.questionEntries){
+            if([[entry objectForKey:@"type"] isEqualToString:categoryName]){
+                [aspects addObject:[entry objectForKey:@"aspect"]];
+            }
+        }
+        [self.typeQuestionPair setObject:aspects forKey:categoryName];
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,25 +91,49 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 1;
+        // Return the number of sections.
+    return [self.categories count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    PFObject *currentCategory = self.categories[section];
+    NSString *header = [currentCategory objectForKey:@"type"];
+    return header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.questionEntries count];
+    PFObject *currentCategory = self.categories[section];
+    NSString *categoryName = [currentCategory objectForKey:@"type"];
+    NSInteger counter = 0;
+    for (PFObject *q in self.questionEntries){
+        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
+            counter ++;
+        }
+    }
+    return counter;
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
- 
+
+    PFObject *currentCategory = self.categories[indexPath.section];
+    NSString *categoryName = [currentCategory objectForKey:@"type"];
+    NSMutableArray *aspects = [[NSMutableArray alloc]init];
+    for (PFObject *q in self.questionEntries){
+        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
+            [aspects addObject:[q objectForKey:@"aspect"]];
+        }
+    }
     NSString *questionNumber = [self.questionEntries[indexPath.row] objectForKey:@"index"];
-    NSString *question = [self.questionEntries[indexPath.row] objectForKey:@"Question"];
+
     cell.questionNumberLabel.text = questionNumber;
-    cell.questionCategoryLabel.text = question;
+    cell.questionCategoryLabel.text = aspects[indexPath.row];
     return cell;
 }
 
@@ -131,9 +185,20 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
+    NSInteger sectionNumber = [self.tableView indexPathForSelectedRow].section;
     NSInteger rowNumber = [self.tableView indexPathForSelectedRow].row;
-    questionVC.question = [self.questionEntries[rowNumber] objectForKey:@"Question"];
-    questionVC.questionIndex = [self.questionEntries[rowNumber] objectForKey:@"index"];
+    
+    PFObject *currentCategory = self.categories[sectionNumber];
+    NSString *categoryName = [currentCategory objectForKey:@"type"];
+    NSMutableArray *currentQuestions = [[NSMutableArray alloc]init];
+    for (PFObject *q in self.questionEntries){
+        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
+            [currentQuestions addObject:[q objectForKey:@"Question"]];
+        }
+    }
+    
+    questionVC.question = currentQuestions[rowNumber];
+    questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
 }
 
 
