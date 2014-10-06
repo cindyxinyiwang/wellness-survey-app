@@ -140,10 +140,7 @@
 				75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */,
 				7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */,
 				7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */,
-				7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */,
-				7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */,
-				7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */,
-				7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */,
+				7564426719DE1B56001051BD /* LoginSignup */,
 				7564DB7B19CC980B0033C6FC /* question modal */,
 				7500D56C19C0C60D003CF1E2 /* wellness survey app */,
 				7500D58519C0C60D003CF1E2 /* wellness survey appTests */,
@@ -221,6 +218,17 @@
 				7500D58819C0C60D003CF1E2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7564426719DE1B56001051BD /* LoginSignup */ = {
+			isa = PBXGroup;
+			children = (
+				7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */,
+				7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */,
+				7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */,
+				7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */,
+			);
+			name = LoginSignup;
 			sourceTree = "<group>";
 		};
 		7564DB7B19CC980B0033C6FC /* question modal */ = {

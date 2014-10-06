@@ -62,8 +62,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.password.delegate = self;
-    self.userName.delegate = self;
+
     _password.secureTextEntry = YES;
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {

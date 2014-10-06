@@ -12,4 +12,5 @@
 @interface XYZdetailQuestionTableViewController : UITableViewController
 @property (strong, nonatomic) NSString *questionIndex;
 @property (strong, nonatomic) NSString *question;
+@property (strong, nonatomic) NSString *questionId;
 @end

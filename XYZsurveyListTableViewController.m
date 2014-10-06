@@ -130,8 +130,6 @@
             [aspects addObject:[q objectForKey:@"aspect"]];
         }
     }
-    NSString *questionNumber = [self.questionEntries[indexPath.row] objectForKey:@"index"];
-
 
     cell.questionCategoryLabel.text = aspects[indexPath.row];
     return cell;
@@ -191,13 +189,17 @@
     PFObject *currentCategory = self.categories[sectionNumber];
     NSString *categoryName = [currentCategory objectForKey:@"type"];
     NSMutableArray *currentQuestions = [[NSMutableArray alloc]init];
+    NSMutableArray *questionIds = [[NSMutableArray alloc]init];
     for (PFObject *q in self.questionEntries){
         if([[q objectForKey:@"type"] isEqualToString:categoryName]){
             [currentQuestions addObject:[q objectForKey:@"Question"]];
+            [questionIds addObject:[q objectId]];
+            
         }
     }
     
     questionVC.question = currentQuestions[rowNumber];
+    questionVC.questionId = questionIds[rowNumber];
     questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
 }
 

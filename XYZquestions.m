@@ -47,7 +47,7 @@
 - (NSArray *)privateListOfQuestions{
     if(!_privateListOfQuestions) {
         NSArray *questionArray = [self getObjectsFromParse];
-        int num = [questionArray count];
+        int num = (int)[questionArray count];
         int i = 0;
         NSMutableArray *mutable = [[NSMutableArray alloc] init];
         while (i < num){

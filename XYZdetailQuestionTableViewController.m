@@ -7,13 +7,17 @@
 //
 
 #import "XYZdetailQuestionTableViewController.h"
-
+#import <Parse/Parse.h>
 
 @interface XYZdetailQuestionTableViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *questionShow;
+@property (weak, nonatomic) IBOutlet UILabel *questionListed;
 
+@property (weak, nonatomic) IBOutlet UITextField *answer;
 
+@property (nonatomic) BOOL *answered;
+
+@property (nonatomic) NSString *previousAnswer;
 @end
 
 @implementation XYZdetailQuestionTableViewController
@@ -27,7 +31,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = [NSString stringWithFormat:@"Question %@", self.questionIndex];
-    self.questionShow.text = _question;
+    self.questionListed.text = _question;
+    if (self.answered) {
+        self.answer.text = self.previousAnswer;
+        self.answer.userInteractionEnabled = false;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,8 +43,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+- (IBAction)saveAnswer {
+    self.answer.userInteractionEnabled = false;
+    self.previousAnswer = [self.answer text];
+    PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
+    [newAnswer setObject:[self.answer text] forKey:@"answer"];
+    [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
+    PFQuery *matchQuestion = [PFQuery queryWithClassName:@"SurveyQuestion"];
+    [matchQuestion getObjectInBackgroundWithId:self.questionId block:^(PFObject *object, NSError *error) {
+        if (!error){
+            
+            [newAnswer setObject:object forKey:@"question"];
+            [newAnswer saveInBackground];
+            _answered = YES;
+        }
+    }];
+    
+}
 
+#pragma mark - Table view data source
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
@@ -46,19 +72,20 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 3;
+    return 1;
 }
-
+*/
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"detailQuestionCell" forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
-*/
 
+*/
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
