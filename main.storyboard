@@ -139,7 +139,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XbX-XP-QR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319" y="370"/>
+            <point key="canvasLocation" x="847" y="986"/>
+        </scene>
+        <!--Zmultiselect View Controller-->
+        <scene sceneID="GZ2-fX-hSG">
+            <objects>
+                <viewController id="iHY-7c-c3d" customClass="XYZmultiselectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jx9-0G-6Eu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hbx-m4-Ylw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TJU-QB-e7y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question Displayed here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXD-Uq-Kju">
+                                <rect key="frame" x="21" y="117" width="283" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hi3-j7-pw2">
+                                <rect key="frame" x="113" y="329" width="75" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKE-5z-gei">
+                                <rect key="frame" x="0.0" y="164" width="320" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ck7-Vv-3hE"/>
+                    <connections>
+                        <outlet property="questionShow" destination="aXD-Uq-Kju" id="66S-vP-4lc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LBU-KQ-KwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816" y="-119"/>
+        </scene>
+        <!--Zsingle Select View Controller-->
+        <scene sceneID="zhd-5M-dXo">
+            <objects>
+                <viewController id="e6O-q9-R05" customClass="XYZsingleSelectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="csm-nj-pXj"/>
+                        <viewControllerLayoutGuide type="bottom" id="UdK-F2-mp2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ua2-9I-2aC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIU-WX-rcb">
+                                <rect key="frame" x="127" y="319" width="66" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-CL-HZo">
+                                <rect key="frame" x="0.0" y="149" width="320" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question display here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1t-7e-7dC">
+                                <rect key="frame" x="16" y="125" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="efb-L9-ARk"/>
+                    <connections>
+                        <outlet property="questionShow" destination="Z1t-7e-7dC" id="b2P-AZ-iwg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w6h-hu-DtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1802" y="651"/>
         </scene>
         <!--Zsurvey List Table View Controller-->
         <scene sceneID="Qnc-mM-h3h">
@@ -166,7 +244,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="questionCategoryLabel" destination="Hkg-uB-AeC" id="BTj-GF-Gwx"/>
-                                    <segue destination="a0J-lO-2Pe" kind="push" id="Ukp-dE-IGv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -190,6 +267,12 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="a0J-lO-2Pe" kind="push" identifier="text" id="YnS-w8-9I5"/>
+                        <segue destination="hH0-S1-J8n" kind="push" identifier="rate" id="e9n-Uc-JcX"/>
+                        <segue destination="iHY-7c-c3d" kind="push" identifier="multiSelect" id="Fid-R9-8xI"/>
+                        <segue destination="e6O-q9-R05" kind="push" identifier="singleSelect" id="xqm-aY-prp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZA-Fl-O6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -262,7 +345,50 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryK-Gt-uKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556" y="-333"/>
+            <point key="canvasLocation" x="1142" y="-1209"/>
+        </scene>
+        <!--Zrate View Controller-->
+        <scene sceneID="zxx-UK-aD1">
+            <objects>
+                <viewController id="hH0-S1-J8n" customClass="XYZrateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zR0-lx-kcd"/>
+                        <viewControllerLayoutGuide type="bottom" id="JUr-zE-25s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LEu-cU-v0U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rw8-KJ-KGx">
+                                <rect key="frame" x="14" y="199" width="287" height="31"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95T-3o-rj2">
+                                <rect key="frame" x="132" y="258" width="50" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="hH0-S1-J8n" eventType="touchUpInside" id="8fF-08-GhR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question displayed here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-xv-q4N">
+                                <rect key="frame" x="16" y="115" width="288" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ghc-zG-Mse"/>
+                    <connections>
+                        <outlet property="answer" destination="rw8-KJ-KGx" id="E8C-yC-suh"/>
+                        <outlet property="questionShow" destination="eWq-xv-q4N" id="i3r-gf-kdc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ba-4P-sqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398" y="-547"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Fr-IT-8Xl">
@@ -280,7 +406,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qH-s5-PgN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="370"/>
+            <point key="canvasLocation" x="362" y="642"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B0p-P5-pt1">
@@ -335,7 +461,62 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAf-F9-CdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1238" y="-1087"/>
+            <point key="canvasLocation" x="622" y="-1671"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G4E-rx-rXI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="USF-M3-wUK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="1ZQ-VP-NC7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXE-kT-y7u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hH0-S1-J8n" kind="relationship" relationship="rootViewController" id="CZn-5A-jEP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ay-zo-PnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2218" y="-1067"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4EM-7R-GVd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="61d-EP-PRL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RfI-Of-S1o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iHY-7c-c3d" kind="relationship" relationship="rootViewController" id="a6L-kc-yuS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9NL-05-id7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2480" y="-367"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3EE-Hu-Upo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GbL-tf-8eL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXV-aT-vE2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e6O-q9-R05" kind="relationship" relationship="rootViewController" id="pbT-xE-WfF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMx-6f-5sM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2934" y="331"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -344,7 +525,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Fid-R9-8xI"/>
         <segue reference="7Xv-lp-LUm"/>
-        <segue reference="N2Y-0u-asP"/>
+        <segue reference="xqm-aY-prp"/>
+        <segue reference="e9n-Uc-JcX"/>
+        <segue reference="YnS-w8-9I5"/>
     </inferredMetricsTieBreakers>
 </document>

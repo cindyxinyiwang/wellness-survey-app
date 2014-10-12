@@ -9,6 +9,9 @@
 #import "XYZsurveyListTableViewController.h"
 #import "XYZsurveyListTableViewCell.h"
 #import "XYZdetailQuestionTableViewController.h"
+#import "XYZmultiselectViewController.h"
+#import "XYZsingleSelectViewController.h"
+#import "XYZrateViewController.h"
 #import <Parse/Parse.h>
 
 @interface XYZsurveyListTableViewController ()
@@ -173,7 +176,26 @@
     return YES;
 }
 */
-
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *currentCategory = self.categories[indexPath.section];
+    NSString *categoryName = [currentCategory objectForKey:@"type"];
+    NSMutableArray *answerType = [[NSMutableArray alloc]init];
+    for (PFObject *q in self.questionEntries){
+        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
+            [answerType addObject:[q objectForKey:@"answerType"]];
+        }
+    }
+    NSString *type = answerType[indexPath.row];
+    if ([type isEqualToString:@"text"]) {
+        [self performSegueWithIdentifier:@"text" sender:self];
+    } else if ([type isEqualToString:@"singleSelect"]) {
+        [self performSegueWithIdentifier:@"singleSelect" sender:self];
+    } else if ([type isEqualToString:@"multiSelect"]) {
+        [self performSegueWithIdentifier:@"multiSelect" sender:self];
+    }   else if ([type isEqualToString:@"rate"]) {
+        [self performSegueWithIdentifier:@"rate" sender:self];
+    }
+}
 
 #pragma mark - Navigation
 
@@ -182,7 +204,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
+    
     NSInteger sectionNumber = [self.tableView indexPathForSelectedRow].section;
     NSInteger rowNumber = [self.tableView indexPathForSelectedRow].row;
     
@@ -197,10 +219,30 @@
             
         }
     }
-    
-    questionVC.question = currentQuestions[rowNumber];
-    questionVC.questionId = questionIds[rowNumber];
-    questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+    if ([[segue identifier] isEqualToString:@"text"]) {
+        XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
+        questionVC.question = currentQuestions[rowNumber];
+        questionVC.questionId = questionIds[rowNumber];
+        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+    }
+    if ([[segue identifier] isEqualToString:@"rate"]) {
+        XYZrateViewController *questionVC = segue.destinationViewController;
+        questionVC.question = currentQuestions[rowNumber];
+        questionVC.questionId = questionIds[rowNumber];
+        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+    }
+    if ([[segue identifier] isEqualToString:@"multiSelect"]) {
+        XYZmultiselectViewController *questionVC = segue.destinationViewController;
+        questionVC.question = currentQuestions[rowNumber];
+        questionVC.questionId = questionIds[rowNumber];
+        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+    }
+    if ([[segue identifier] isEqualToString:@"multiSelect"]) {
+        XYZsingleSelectViewController *questionVC = segue.destinationViewController;
+        questionVC.question = currentQuestions[rowNumber];
+        questionVC.questionId = questionIds[rowNumber];
+        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+    }
 }
 
 
