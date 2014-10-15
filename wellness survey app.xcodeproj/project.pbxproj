@@ -33,8 +33,8 @@
 		7500D5AC19C0C6AD003CF1E2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A319C0C6AD003CF1E2 /* SystemConfiguration.framework */; };
 		7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */; };
 		753715E219EA19B200B7C314 /* XYZrateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715E119EA19B200B7C314 /* XYZrateViewController.m */; };
-		753715E519EA2A4B00B7C314 /* XYZmultiselectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715E419EA2A4B00B7C314 /* XYZmultiselectViewController.m */; };
 		753715E819EA2DA000B7C314 /* XYZsingleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715E719EA2DA000B7C314 /* XYZsingleSelectViewController.m */; };
+		753715EB19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */; };
 		7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */; };
 		7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */; };
 		7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7619CC97EA0033C6FC /* XYZquestion.m */; };
@@ -86,10 +86,10 @@
 		7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsignupViewController.m; sourceTree = "<group>"; };
 		753715E019EA19B200B7C314 /* XYZrateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZrateViewController.h; sourceTree = "<group>"; };
 		753715E119EA19B200B7C314 /* XYZrateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZrateViewController.m; sourceTree = "<group>"; };
-		753715E319EA2A4B00B7C314 /* XYZmultiselectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZmultiselectViewController.h; sourceTree = "<group>"; };
-		753715E419EA2A4B00B7C314 /* XYZmultiselectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZmultiselectViewController.m; sourceTree = "<group>"; };
 		753715E619EA2DA000B7C314 /* XYZsingleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsingleSelectViewController.h; sourceTree = "<group>"; };
 		753715E719EA2DA000B7C314 /* XYZsingleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsingleSelectViewController.m; sourceTree = "<group>"; };
+		753715E919EDE95D00B7C314 /* XYZmultiSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZmultiSelectTableViewController.h; sourceTree = "<group>"; };
+		753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZmultiSelectTableViewController.m; sourceTree = "<group>"; };
 		7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZloginViewController.h; sourceTree = "<group>"; };
 		7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZloginViewController.m; sourceTree = "<group>"; };
 		7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewController.h; sourceTree = "<group>"; };
@@ -231,10 +231,10 @@
 		753715DF19EA16EE00B7C314 /* answerScene */ = {
 			isa = PBXGroup;
 			children = (
+				753715E919EDE95D00B7C314 /* XYZmultiSelectTableViewController.h */,
+				753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */,
 				753715E619EA2DA000B7C314 /* XYZsingleSelectViewController.h */,
 				753715E719EA2DA000B7C314 /* XYZsingleSelectViewController.m */,
-				753715E319EA2A4B00B7C314 /* XYZmultiselectViewController.h */,
-				753715E419EA2A4B00B7C314 /* XYZmultiselectViewController.m */,
 				753715E019EA19B200B7C314 /* XYZrateViewController.h */,
 				753715E119EA19B200B7C314 /* XYZrateViewController.m */,
 				75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */,
@@ -367,12 +367,12 @@
 			files = (
 				7500D57719C0C60D003CF1E2 /* XYZAppDelegate.m in Sources */,
 				7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */,
-				753715E519EA2A4B00B7C314 /* XYZmultiselectViewController.m in Sources */,
 				7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */,
 				75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */,
 				753715E219EA19B200B7C314 /* XYZrateViewController.m in Sources */,
 				7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */,
 				7500D57319C0C60D003CF1E2 /* main.m in Sources */,
+				753715EB19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m in Sources */,
 				7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */,
 				75A7A20219D3643C007EADCD /* XYZdetailQuestionTableViewController.m in Sources */,
 				753715E819EA2DA000B7C314 /* XYZsingleSelectViewController.m in Sources */,

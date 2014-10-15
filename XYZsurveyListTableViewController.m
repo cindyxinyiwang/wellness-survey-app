@@ -9,8 +9,8 @@
 #import "XYZsurveyListTableViewController.h"
 #import "XYZsurveyListTableViewCell.h"
 #import "XYZdetailQuestionTableViewController.h"
-#import "XYZmultiselectViewController.h"
 #import "XYZsingleSelectViewController.h"
+#import "XYZmultiSelectTableViewController.h"
 #import "XYZrateViewController.h"
 #import <Parse/Parse.h>
 
@@ -232,16 +232,31 @@
         questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
     }
     if ([[segue identifier] isEqualToString:@"multiSelect"]) {
-        XYZmultiselectViewController *questionVC = segue.destinationViewController;
+        XYZmultiSelectTableViewController *questionVC = segue.destinationViewController;
         questionVC.question = currentQuestions[rowNumber];
         questionVC.questionId = questionIds[rowNumber];
         questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+        for (PFObject *q in self.questionEntries){
+            NSString *i = q.objectId ;
+            if ([i isEqualToString:questionIds[rowNumber]]){
+                questionVC.pickerData = [q objectForKey:@"config"];
+                break;
+            }
+        }
     }
-    if ([[segue identifier] isEqualToString:@"multiSelect"]) {
+    if ([[segue identifier] isEqualToString:@"singleSelect"]) {
         XYZsingleSelectViewController *questionVC = segue.destinationViewController;
         questionVC.question = currentQuestions[rowNumber];
         questionVC.questionId = questionIds[rowNumber];
         questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+        for (PFObject *q in self.questionEntries){
+            NSString *i = q.objectId ;
+            if ([i isEqualToString:questionIds[rowNumber]]){
+                questionVC.pickerData = [q objectForKey:@"config"];
+                break;
+            }
+        }
+        
     }
 }
 

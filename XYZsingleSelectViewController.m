@@ -7,9 +7,11 @@
 //
 
 #import "XYZsingleSelectViewController.h"
+#import <Parse/Parse.h>
 
 @interface XYZsingleSelectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *questionShow;
+
 
 @end
 
@@ -18,7 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.questionShow.text = _question;
+    
+   self.picker.dataSource = self;
+   self.picker.delegate = self;
+    self.questionShow.text = self.question;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +32,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (int)numberOfComponentsInPickerView: (UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    //NSLog(@"The first value is %@", _pickerData);
+    //NSArray *data = [_pickerData objectForKey:@"config"];
+    //NSLog(@"The second value is %@", data);
+    return (int)[_pickerData count];
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    //NSArray *data = [_pickerData objectForKey:@"config"];
+  
+    return _pickerData[row];
+}
+ 
 /*
 #pragma mark - Navigation
 
