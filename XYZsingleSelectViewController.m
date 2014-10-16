@@ -27,6 +27,13 @@
 
 }
 
+- (IBAction)saveAnswer:(UIButton *)sender {
+    NSInteger row = [self.picker selectedRowInComponent:0];
+    NSString *answer = [self.pickerData objectAtIndex:row];
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

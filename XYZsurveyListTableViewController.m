@@ -17,6 +17,7 @@
 @interface XYZsurveyListTableViewController ()
 @property (strong, nonatomic) NSArray *questionEntries;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSArray *currentAnswers;
 ////////////////////////
 //problems:
 //1. how to set up a dictionary of the data stored in Parse(given the fact that findObject is synchronized and block main thread)
@@ -69,7 +70,14 @@
 
         }
     }];
-
+    PFQuery *answerQuery = [PFQuery queryWithClassName:@"AnswerInProgress"];
+    [answerQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [answerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if  (!error) {
+            self.currentAnswers = objects;
+        }
+    }];
+    
     for (PFObject *q in self.categories){
         NSString *categoryName = [q objectForKey:@"type"];
         NSMutableArray *aspects = [[NSMutableArray alloc] init];
@@ -219,11 +227,24 @@
             
         }
     }
+    NSString *answerNow;
+    PFQuery *answerQuery = [PFQuery queryWithClassName:@"AnswerInProgress"];
+    [answerQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [answerQuery whereKey:@"questionId" equalTo:questionIds[rowNumber]];
+    for (PFObject *a in self.currentAnswers) {
+        if([[a objectForKey:@"questionId"] isEqualToString:questionIds[rowNumber]]){
+            answerNow = [a objectForKey:@"answer"];
+            
+        }
+    }
+ 
     if ([[segue identifier] isEqualToString:@"text"]) {
         XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
         questionVC.question = currentQuestions[rowNumber];
         questionVC.questionId = questionIds[rowNumber];
         questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+        questionVC.prevAnswer = answerNow;
+
     }
     if ([[segue identifier] isEqualToString:@"rate"]) {
         XYZrateViewController *questionVC = segue.destinationViewController;

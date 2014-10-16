@@ -17,7 +17,7 @@
 
 @property (nonatomic) BOOL *answered;
 
-@property (nonatomic) NSString *previousAnswer;
+
 @end
 
 @implementation XYZdetailQuestionTableViewController
@@ -32,9 +32,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = [NSString stringWithFormat:@"Question %@", self.questionIndex];
     self.questionListed.text = _question;
-    if (self.answered) {
-        self.answer.text = self.previousAnswer;
+    if (self.prevAnswer != nil) {
+        self.answer.text = self.prevAnswer;
         self.answer.userInteractionEnabled = false;
+        self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
     }
 }
 
@@ -42,23 +43,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)editAnswer:(UIButton *)sender {
+    self.answer.userInteractionEnabled = true;
+    self.answer.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1];
+}
 
 - (IBAction)saveAnswer {
     self.answer.userInteractionEnabled = false;
-    self.previousAnswer = [self.answer text];
+
+    PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
+    [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
+    
     PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
     [newAnswer setObject:[self.answer text] forKey:@"answer"];
     [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
     PFQuery *matchQuestion = [PFQuery queryWithClassName:@"SurveyQuestion"];
     [matchQuestion getObjectInBackgroundWithId:self.questionId block:^(PFObject *object, NSError *error) {
         if (!error){
-            
-            [newAnswer setObject:object forKey:@"question"];
-            [newAnswer saveInBackground];
-            _answered = YES;
+            [queryAnswer whereKey:@"question" equalTo:object];
+            if ([queryAnswer countObjects] == 0){
+                [newAnswer setObject:object forKey:@"question"];
+                [newAnswer setObject:[object objectId] forKey:@"questionId"];
+                [newAnswer saveInBackground];
+                self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+                UIAlertView *savedSuccess = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Saved Successfully!"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [savedSuccess show];
+            } else {
+                UIAlertView *saved = [[UIAlertView alloc]initWithTitle:@"Warning" message: @"Your have already answered the question" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [saved show];
+            }
         }
     }];
-    
+   
 }
 
 #pragma mark - Table view data source
