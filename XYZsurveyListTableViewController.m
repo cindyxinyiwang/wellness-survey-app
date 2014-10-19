@@ -66,32 +66,21 @@
         } else {
             self.categories = objects;
             [self.tableView reloadData];
-            
-
         }
     }];
+        
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     PFQuery *answerQuery = [PFQuery queryWithClassName:@"AnswerInProgress"];
     [answerQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [answerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if  (!error) {
             self.currentAnswers = objects;
+            [self.tableView reloadData];
         }
     }];
-    
-    for (PFObject *q in self.categories){
-        NSString *categoryName = [q objectForKey:@"type"];
-        NSMutableArray *aspects = [[NSMutableArray alloc] init];
-        for (PFObject *entry in self.questionEntries){
-            if([[entry objectForKey:@"type"] isEqualToString:categoryName]){
-                [aspects addObject:[entry objectForKey:@"aspect"]];
-            }
-        }
-        [self.typeQuestionPair setObject:aspects forKey:categoryName];
-    }
-
-    
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -251,6 +240,7 @@
         questionVC.question = currentQuestions[rowNumber];
         questionVC.questionId = questionIds[rowNumber];
         questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
+        questionVC.prevAnswer = answerNow;
     }
     if ([[segue identifier] isEqualToString:@"multiSelect"]) {
         XYZmultiSelectTableViewController *questionVC = segue.destinationViewController;

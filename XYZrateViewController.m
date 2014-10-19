@@ -14,9 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *answer;
 
-@property (nonatomic) BOOL *answered;
+@property (nonatomic) BOOL *reviseClicked;
 
-@property (nonatomic) NSString *previousAnswer;
 @end
 
 @implementation XYZrateViewController
@@ -25,6 +24,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.questionShow.text = _question;
+    self.navigationItem.title = [NSString stringWithFormat:@"Question %@", self.questionIndex];
+    
+    if (self.prevAnswer != nil) {
+        self.answer.value = [self.prevAnswer floatValue];
+        self.answer.userInteractionEnabled = false;
+        self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,21 +38,60 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)revise:(id)sender {
+    self.answer.userInteractionEnabled = true;
+    self.answer.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1];
+    PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
+    [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
+    [queryAnswer whereKey:@"questionId" equalTo:self.questionId];
+    if ([queryAnswer countObjects] == 0) {
+        UIAlertView *noAnswer = [[UIAlertView alloc] initWithTitle:@"Message" message:@"This question has not been answered yet."delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [noAnswer show];
+    } else {
+        self.reviseClicked = YES;
+    }
+
+}
+
 - (IBAction)submit:(id)sender {
-    self.answer.userInteractionEnabled = false;
-    self.previousAnswer = [NSString stringWithFormat:@"%f",[self.answer value]];
-    PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
-    [newAnswer setObject:self.previousAnswer forKey:@"answer"];
-    [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
+    PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
+    [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    
     PFQuery *matchQuestion = [PFQuery queryWithClassName:@"SurveyQuestion"];
     [matchQuestion getObjectInBackgroundWithId:self.questionId block:^(PFObject *object, NSError *error) {
         if (!error){
+            [queryAnswer whereKey:@"question" equalTo:object];
             
-            [newAnswer setObject:object forKey:@"question"];
-            [newAnswer saveInBackground];
-            _answered = YES;
+            if ([queryAnswer countObjects] == 0){
+                PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
+                [newAnswer setObject:[NSString stringWithFormat:@"%f", self.answer.value] forKey:@"answer"];
+                [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
+                [newAnswer setObject:object forKey:@"question"];
+                [newAnswer setObject:[object objectId] forKey:@"questionId"];
+                [newAnswer saveInBackground];
+                self.answer.userInteractionEnabled = false;
+                self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+                UIAlertView *savedSuccess = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Saved Successfully!"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [savedSuccess show];
+                
+            } else if (self.reviseClicked) {
+                [queryAnswer getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+                    object[@"answer"] =[NSString stringWithFormat:@"%f", self.answer.value];
+                    [object saveInBackground];
+                    self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+                    [object refresh];
+                }];
+                
+                self.answer.userInteractionEnabled = false;
+                self.reviseClicked = NO;
+            } else {
+                UIAlertView *saved = [[UIAlertView alloc]initWithTitle:@"Warning" message: @"Your have already answered the question" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [saved show];
+            }
         }
     }];
+    
 
 }
 

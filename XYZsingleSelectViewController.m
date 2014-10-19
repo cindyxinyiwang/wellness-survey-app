@@ -11,7 +11,7 @@
 
 @interface XYZsingleSelectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *questionShow;
-
+@property (weak, nonatomic) NSString *answer;
 
 @end
 
@@ -24,6 +24,14 @@
    self.picker.dataSource = self;
    self.picker.delegate = self;
     self.questionShow.text = self.question;
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"Question %@", self.questionIndex];
+    
+    if (self.prevAnswer != nil) {
+        self.answer.value = [self.prevAnswer floatValue];
+        self.answer.userInteractionEnabled = false;
+        self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+    }
 
 }
 
