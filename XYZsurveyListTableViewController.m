@@ -22,7 +22,7 @@
 //problems:
 //1. how to set up a dictionary of the data stored in Parse(given the fact that findObject is synchronized and block main thread)
 //2. when one of the entries is not defined, it gives and error (could define set up at the web end)
-@property (strong, nonatomic) NSMutableDictionary *typeQuestionPair;
+
 @end
 
 @implementation XYZsurveyListTableViewController
@@ -254,6 +254,7 @@
                 break;
             }
         }
+        
     }
     if ([[segue identifier] isEqualToString:@"singleSelect"]) {
         XYZsingleSelectViewController *questionVC = segue.destinationViewController;
@@ -267,6 +268,7 @@
                 break;
             }
         }
+        questionVC.prevAnswer = answerNow;
         
     }
 }

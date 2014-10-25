@@ -11,7 +11,7 @@
 
 @interface XYZsingleSelectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *questionShow;
-@property (weak, nonatomic) NSString *answer;
+@property (nonatomic) BOOL reviseClicked;
 
 @end
 
@@ -28,17 +28,62 @@
     self.navigationItem.title = [NSString stringWithFormat:@"Question %@", self.questionIndex];
     
     if (self.prevAnswer != nil) {
-        self.answer.value = [self.prevAnswer floatValue];
-        self.answer.userInteractionEnabled = false;
-        self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+        NSUInteger row = [self.pickerData indexOfObject:self.prevAnswer];
+        [self.picker selectRow:row inComponent:0 animated:YES];
+        self.picker.userInteractionEnabled = false;
+        self.picker.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
     }
 
 }
+- (IBAction)revise:(id)sender {
+    self.picker.userInteractionEnabled = true;
+    self.picker.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1];
+    self.reviseClicked = true;
+}
 
 - (IBAction)saveAnswer:(UIButton *)sender {
-    NSInteger row = [self.picker selectedRowInComponent:0];
+    NSUInteger row = [self.picker selectedRowInComponent:0];
     NSString *answer = [self.pickerData objectAtIndex:row];
     
+    
+    PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
+    [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    
+    PFQuery *matchQuestion = [PFQuery queryWithClassName:@"SurveyQuestion"];
+    [matchQuestion getObjectInBackgroundWithId:self.questionId block:^(PFObject *object, NSError *error) {
+        if (!error){
+            [queryAnswer whereKey:@"question" equalTo:object];
+            
+            if ([queryAnswer countObjects] == 0){
+                PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
+                [newAnswer setObject:answer forKey:@"answer"];
+                [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
+                [newAnswer setObject:object forKey:@"question"];
+                [newAnswer setObject:[object objectId] forKey:@"questionId"];
+                [newAnswer saveInBackground];
+                self.picker.userInteractionEnabled = false;
+                self.picker.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+                UIAlertView *savedSuccess = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Saved Successfully!"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [savedSuccess show];
+                
+            } else if (self.reviseClicked) {
+                [queryAnswer getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+                    object[@"answer"] = answer;
+                    [object saveInBackground];
+                    self.picker.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+                    [object refresh];
+                }];
+                
+                self.picker.userInteractionEnabled = false;
+                self.reviseClicked = NO;
+            } else {
+                UIAlertView *saved = [[UIAlertView alloc]initWithTitle:@"Warning" message: @"Your have already answered the question" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [saved show];
+            }
+        }
+    }];
+
     
 }
 
@@ -47,13 +92,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (int)numberOfComponentsInPickerView: (UIPickerView *)pickerView
+- (NSInteger)numberOfComponentsInPickerView: (UIPickerView *)pickerView
 {
     return 1;
 }
 
 // The number of rows of data
-- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     //NSLog(@"The first value is %@", _pickerData);
     //NSArray *data = [_pickerData objectForKey:@"config"];

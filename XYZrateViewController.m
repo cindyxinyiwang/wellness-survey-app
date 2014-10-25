@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *answer;
 
-@property (nonatomic) BOOL *reviseClicked;
+@property (nonatomic) BOOL reviseClicked;
 
 @end
 

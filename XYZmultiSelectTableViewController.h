@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XYZmultiSelectTableViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface XYZmultiSelectTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) NSArray *pickerData;
 @property (strong, nonatomic) NSString *questionIndex;
 @property (strong, nonatomic) NSString *question;

@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *answer;
 
-@property (nonatomic) BOOL *reviseClicked;
+@property (nonatomic) BOOL reviseClicked;
 
 
 
