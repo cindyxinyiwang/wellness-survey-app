@@ -37,8 +37,6 @@
 		753715EB19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */; };
 		7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */; };
 		7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */; };
-		7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7619CC97EA0033C6FC /* XYZquestion.m */; };
-		7564DB7A19CC97FE0033C6FC /* XYZquestions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7919CC97FE0033C6FC /* XYZquestions.m */; };
 		75A7A20219D3643C007EADCD /* XYZdetailQuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */; };
 		75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -94,10 +92,6 @@
 		7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZloginViewController.m; sourceTree = "<group>"; };
 		7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewController.h; sourceTree = "<group>"; };
 		7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsurveyListTableViewController.m; sourceTree = "<group>"; };
-		7564DB7519CC97EA0033C6FC /* XYZquestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZquestion.h; sourceTree = "<group>"; };
-		7564DB7619CC97EA0033C6FC /* XYZquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestion.m; sourceTree = "<group>"; };
-		7564DB7819CC97FE0033C6FC /* XYZquestions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZquestions.h; sourceTree = "<group>"; };
-		7564DB7919CC97FE0033C6FC /* XYZquestions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestions.m; sourceTree = "<group>"; };
 		75A7A20019D3643C007EADCD /* XYZdetailQuestionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZdetailQuestionTableViewController.h; sourceTree = "<group>"; };
 		75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZdetailQuestionTableViewController.m; sourceTree = "<group>"; };
 		75C1AF2C19D11C7C004F9B65 /* XYZsurveyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewCell.h; sourceTree = "<group>"; };
@@ -149,7 +143,6 @@
 				7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */,
 				7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */,
 				7564426719DE1B56001051BD /* LoginSignup */,
-				7564DB7B19CC980B0033C6FC /* question modal */,
 				7500D56C19C0C60D003CF1E2 /* wellness survey app */,
 				7500D58519C0C60D003CF1E2 /* wellness survey appTests */,
 				7500D56519C0C60D003CF1E2 /* Frameworks */,
@@ -252,17 +245,6 @@
 				7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */,
 			);
 			name = LoginSignup;
-			sourceTree = "<group>";
-		};
-		7564DB7B19CC980B0033C6FC /* question modal */ = {
-			isa = PBXGroup;
-			children = (
-				7564DB7519CC97EA0033C6FC /* XYZquestion.h */,
-				7564DB7619CC97EA0033C6FC /* XYZquestion.m */,
-				7564DB7819CC97FE0033C6FC /* XYZquestions.h */,
-				7564DB7919CC97FE0033C6FC /* XYZquestions.m */,
-			);
-			name = "question modal";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,10 +355,8 @@
 				7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */,
 				7500D57319C0C60D003CF1E2 /* main.m in Sources */,
 				753715EB19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m in Sources */,
-				7564DB7719CC97EA0033C6FC /* XYZquestion.m in Sources */,
 				75A7A20219D3643C007EADCD /* XYZdetailQuestionTableViewController.m in Sources */,
 				753715E819EA2DA000B7C314 /* XYZsingleSelectViewController.m in Sources */,
-				7564DB7A19CC97FE0033C6FC /* XYZquestions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

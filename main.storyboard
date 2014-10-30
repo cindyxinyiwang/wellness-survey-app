@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zSz-T7-O0k">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -152,15 +153,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIU-WX-rcb">
-                                <rect key="frame" x="127" y="319" width="66" height="30"/>
-                                <state key="normal" title="Submit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveAnswer:" destination="e6O-q9-R05" eventType="touchUpInside" id="Uvu-vR-1Na"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-CL-HZo">
                                 <rect key="frame" x="0.0" y="149" width="320" height="162"/>
                             </pickerView>
@@ -170,27 +162,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-is-jFd">
-                                <rect key="frame" x="127" y="351" width="66" height="30"/>
-                                <state key="normal" title="Revise">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="revise:" destination="e6O-q9-R05" eventType="touchUpInside" id="CT0-dR-jYK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="efb-L9-ARk"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="heQ-KA-ZMv" id="0fc-wl-hN4"/>
                         <outlet property="picker" destination="wxi-CL-HZo" id="NGi-X2-S3g"/>
                         <outlet property="questionShow" destination="Z1t-7e-7dC" id="b2P-AZ-iwg"/>
+                        <outlet property="reviseButton" destination="7XF-CD-yDW" id="WaL-e3-KIi"/>
+                        <outlet property="submitButton" destination="SMw-Cj-bsg" id="58i-FP-tpu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6h-hu-DtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Submit" id="SMw-Cj-bsg">
+                    <connections>
+                        <action selector="saveAnswer:" destination="e6O-q9-R05" id="MOQ-JM-Cac"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Revise" id="7XF-CD-yDW">
+                    <connections>
+                        <action selector="revise:" destination="e6O-q9-R05" id="gu8-cX-ZVZ"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Cancel" id="heQ-KA-ZMv">
+                    <connections>
+                        <action selector="cancel:" destination="e6O-q9-R05" id="30u-lM-g3A"/>
+                    </connections>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="1102" y="635"/>
+            <point key="canvasLocation" x="1222" y="669"/>
         </scene>
         <!--Zsurvey List Table View Controller-->
         <scene sceneID="Qnc-mM-h3h">
@@ -283,29 +286,11 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3Z-pT-SAC" id="fWj-74-6y3">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2d-t5-p2N">
-                                                    <rect key="frame" x="132" y="119" width="57" height="30"/>
-                                                    <state key="normal" title="Submit">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="saveAnswer" destination="a0J-lO-2Pe" eventType="touchUpInside" id="qJu-ha-DtE"/>
-                                                    </connections>
-                                                </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your answer here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H2b-Oc-cpw">
                                                     <rect key="frame" x="17" y="41" width="286" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhc-Bs-xT1">
-                                                    <rect key="frame" x="130" y="143" width="61" height="30"/>
-                                                    <state key="normal" title="Revise">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="editAnswer:" destination="a0J-lO-2Pe" eventType="touchUpInside" id="Zdo-1F-Pxt"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -322,10 +307,28 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="answer" destination="H2b-Oc-cpw" id="6Cw-t1-DDq"/>
+                        <outlet property="cancelButton" destination="pbs-BK-b95" id="Geq-Nf-6Vp"/>
                         <outlet property="questionListed" destination="qZd-eB-vBf" id="xCr-92-8wY"/>
+                        <outlet property="reviseButton" destination="o30-Wp-Vqc" id="Hda-bm-2xk"/>
+                        <outlet property="submitButton" destination="Kmq-pF-MAh" id="G2O-0A-zJ9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryK-Gt-uKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Submit" id="Kmq-pF-MAh">
+                    <connections>
+                        <action selector="saveAnswer" destination="a0J-lO-2Pe" id="KDK-hY-Eul"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Revise" id="o30-Wp-Vqc">
+                    <connections>
+                        <action selector="editAnswer:" destination="a0J-lO-2Pe" id="DcH-pf-V34"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Cancel" id="pbs-BK-b95">
+                    <connections>
+                        <action selector="cancel:" destination="a0J-lO-2Pe" id="9Ot-xt-Z54"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="1302" y="-1529"/>
         </scene>
@@ -344,40 +347,40 @@
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rw8-KJ-KGx">
                                 <rect key="frame" x="14" y="199" width="287" height="31"/>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95T-3o-rj2">
-                                <rect key="frame" x="132" y="258" width="50" height="30"/>
-                                <state key="normal" title="Submit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submit:" destination="hH0-S1-J8n" eventType="touchUpInside" id="8fF-08-GhR"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question displayed here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-xv-q4N">
                                 <rect key="frame" x="16" y="115" width="288" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42j-i8-puL">
-                                <rect key="frame" x="126" y="284" width="63" height="30"/>
-                                <state key="normal" title="Revise">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="revise:" destination="hH0-S1-J8n" eventType="touchUpInside" id="BZ7-As-qS6"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ghc-zG-Mse"/>
                     <connections>
                         <outlet property="answer" destination="rw8-KJ-KGx" id="E8C-yC-suh"/>
+                        <outlet property="cancelButton" destination="5lO-h2-ea4" id="Hie-aQ-WHp"/>
                         <outlet property="questionShow" destination="eWq-xv-q4N" id="i3r-gf-kdc"/>
+                        <outlet property="reviseButton" destination="VfP-iw-0Lh" id="nGw-mv-SNe"/>
+                        <outlet property="submitButton" destination="ioa-n3-82g" id="Ttl-uZ-hxG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ba-4P-sqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Submit" id="ioa-n3-82g">
+                    <connections>
+                        <action selector="submit:" destination="hH0-S1-J8n" id="GYV-GE-aJ4"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Revise" id="VfP-iw-0Lh">
+                    <connections>
+                        <action selector="revise:" destination="hH0-S1-J8n" id="D0A-ux-M59"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Cancel" id="5lO-h2-ea4">
+                    <connections>
+                        <action selector="cancel:" destination="hH0-S1-J8n" id="JVn-6t-1jq"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="1370" y="-791"/>
         </scene>
@@ -407,11 +410,17 @@
                     <navigationItem key="navigationItem" id="ycq-bT-36p"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="AUg-Ap-VcF" id="WTa-OM-3ar"/>
                         <outlet property="reviseButton" destination="i0q-4d-ajY" id="1dV-Bn-TFY"/>
                         <outlet property="submitButton" destination="12C-06-6fo" id="kE8-J4-kEz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8Q-bE-hoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Cancel" id="AUg-Ap-VcF">
+                    <connections>
+                        <action selector="cancel:" destination="k0K-Gx-KcL" id="iZa-qW-mmO"/>
+                    </connections>
+                </barButtonItem>
                 <barButtonItem title="Submit" id="12C-06-6fo">
                     <connections>
                         <action selector="submit:" destination="k0K-Gx-KcL" id="cwe-6W-9kc"/>

@@ -13,6 +13,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *questionShow;
 @property (nonatomic) BOOL reviseClicked;
 
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *reviseButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *cancelButton;
+
 @end
 
 @implementation XYZsingleSelectViewController
@@ -31,14 +35,18 @@
         NSUInteger row = [self.pickerData indexOfObject:self.prevAnswer];
         [self.picker selectRow:row inComponent:0 animated:YES];
         self.picker.userInteractionEnabled = false;
-        self.picker.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+        self.navigationItem.rightBarButtonItem = self.reviseButton;
+        
+    } else {
+        self.navigationItem.rightBarButtonItem = self.submitButton;
     }
 
 }
 - (IBAction)revise:(id)sender {
-    self.picker.userInteractionEnabled = true;
-    self.picker.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1];
-    self.reviseClicked = true;
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
+    self.reviseClicked = YES;
+    self.navigationItem.rightBarButtonItem = self.submitButton;
+    self.picker.userInteractionEnabled = YES;
 }
 
 - (IBAction)saveAnswer:(UIButton *)sender {
@@ -63,18 +71,18 @@
                 [newAnswer setObject:[object objectId] forKey:@"questionId"];
                 [newAnswer saveInBackground];
                 self.picker.userInteractionEnabled = false;
-                self.picker.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
-                UIAlertView *savedSuccess = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Saved Successfully!"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [savedSuccess show];
+                self.navigationItem.rightBarButtonItem = self.reviseButton;
+                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
                 
             } else if (self.reviseClicked) {
                 [queryAnswer getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
                     object[@"answer"] = answer;
                     [object saveInBackground];
-                    self.picker.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+                    
                     [object refresh];
                 }];
-                
+                self.navigationItem.rightBarButtonItem = self.reviseButton;
+                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
                 self.picker.userInteractionEnabled = false;
                 self.reviseClicked = NO;
             } else {
@@ -85,6 +93,13 @@
     }];
 
     
+}
+
+- (IBAction)cancel:(id)sender {
+    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
+    self.navigationItem.rightBarButtonItem = self.reviseButton;
+    self.reviseClicked = NO;
+    self.picker.userInteractionEnabled = false;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -12,12 +12,12 @@
 @interface XYZdetailQuestionTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *questionListed;
-
 @property (weak, nonatomic) IBOutlet UITextField *answer;
-
 @property (nonatomic) BOOL reviseClicked;
 
-
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *reviseButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *cancelButton;
 
 @end
 
@@ -36,7 +36,9 @@
     if (self.prevAnswer != nil) {
         self.answer.text = self.prevAnswer;
         self.answer.userInteractionEnabled = false;
-        self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
+        self.navigationItem.rightBarButtonItem = self.reviseButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = self.submitButton;
     }
 }
 
@@ -46,16 +48,9 @@
 }
 - (IBAction)editAnswer:(UIButton *)sender {
     self.answer.userInteractionEnabled = true;
-    self.answer.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1];
-    PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
-    [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
-    [queryAnswer whereKey:@"questionId" equalTo:self.questionId];
-    if ([queryAnswer countObjects] == 0) {
-        UIAlertView *noAnswer = [[UIAlertView alloc] initWithTitle:@"Message" message:@"This question has not been answered yet."delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [noAnswer show];
-    } else {
-        self.reviseClicked = YES;
-    }
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
+    self.reviseClicked = YES;
+    self.navigationItem.rightBarButtonItem = self.submitButton;
 }
 
 - (IBAction)saveAnswer {
@@ -78,18 +73,17 @@
                 [newAnswer setObject:[object objectId] forKey:@"questionId"];
                 [newAnswer saveInBackground];
                 self.answer.userInteractionEnabled = false;
-                self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
-                UIAlertView *savedSuccess = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Saved Successfully!"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [savedSuccess show];
+                self.navigationItem.rightBarButtonItem = self.reviseButton;
+                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
                 
             } else if (self.reviseClicked) {
                 [queryAnswer getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
                     object[@"answer"] =self.answer.text;
                     [object saveInBackground];
-                    self.answer.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:160.0f/255.0f blue:160.0f/255.0f alpha:1];
                     [object refresh];
                 }];
-                
+                self.navigationItem.rightBarButtonItem = self.reviseButton;
+                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
                 self.answer.userInteractionEnabled = false;
                 self.reviseClicked = NO;
             } else {
@@ -98,9 +92,15 @@
             }
         }
     }];
-   
-   
 }
+
+- (IBAction)cancel:(id)sender {
+    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
+    self.navigationItem.rightBarButtonItem = self.reviseButton;
+    self.reviseClicked = NO;
+    self.answer.userInteractionEnabled = false;
+}
+
 
 #pragma mark - Table view data source
 /*

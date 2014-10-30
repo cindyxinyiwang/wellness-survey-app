@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *reviseButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *cancelButton;
+
 @property (nonatomic, strong) NSMutableArray *answers;
 
 @property (nonatomic) BOOL reviseClicked;
@@ -123,6 +125,7 @@
                 self.reviseClicked = NO;
                 [self.tableView setEditing:NO animated:YES];
                 self.navigationItem.rightBarButtonItem = self.reviseButton;
+                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
                 [self.tableView reloadData];
                 
             } else if (self.reviseClicked) {
@@ -135,6 +138,7 @@
                 self.reviseClicked = NO;
                 [self.tableView setEditing:NO animated:YES];
                 self.navigationItem.rightBarButtonItem = self.reviseButton;
+                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
                 [self.tableView reloadData];
 
             } else {
@@ -148,11 +152,19 @@
 }
 
 - (IBAction)revise:(id)sender {
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
     self.reviseClicked = YES;
     self.navigationItem.rightBarButtonItem = self.submitButton;
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.tableView setEditing:YES animated:YES];
 
+}
+
+- (IBAction)cancel:(id)sender {
+    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
+    self.navigationItem.rightBarButtonItem = self.reviseButton;
+    self.reviseClicked = NO;
+    [self.tableView setEditing:NO animated:YES];
 }
 /*
 // Override to support editing the table view.
