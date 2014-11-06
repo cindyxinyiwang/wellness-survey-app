@@ -65,9 +65,16 @@
 
     _password.secureTextEntry = YES;
 }
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+
+//allow user to resign edit by clicking
+- (void) touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event {
+    if (self.userName) {
+        if ([self.userName canResignFirstResponder]) [self.userName resignFirstResponder];
+    }
+    if (self.password) {
+        if ([self.password canResignFirstResponder]) [self.password resignFirstResponder];
+    }
+    [super touchesBegan: touches withEvent: event];
 }
 - (void)didReceiveMemoryWarning
 {

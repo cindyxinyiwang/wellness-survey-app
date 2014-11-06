@@ -13,4 +13,6 @@
 @property (strong, nonatomic) NSString *question;
 @property (strong, nonatomic) NSString *questionId;
 @property (strong, nonatomic) NSString *prevAnswer;
+
+@property (strong, nonatomic) NSArray *sliderConfig;
 @end

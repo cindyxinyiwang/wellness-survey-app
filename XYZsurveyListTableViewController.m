@@ -241,6 +241,14 @@
         questionVC.questionId = questionIds[rowNumber];
         questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
         questionVC.prevAnswer = answerNow;
+        for (PFObject *q in self.questionEntries){
+            NSString *i = q.objectId ;
+            if ([i isEqualToString:questionIds[rowNumber]]){
+                questionVC.sliderConfig = [q objectForKey:@"config"];
+                break;
+            }
+        }
+
     }
     if ([[segue identifier] isEqualToString:@"multiSelect"]) {
         XYZmultiSelectTableViewController *questionVC = segue.destinationViewController;

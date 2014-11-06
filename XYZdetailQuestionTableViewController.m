@@ -41,6 +41,13 @@
         self.navigationItem.rightBarButtonItem = self.submitButton;
     }
 }
+//allow user to resign edit by clicking
+- (void) touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event {
+    if (self.answer) {
+        if ([self.answer canResignFirstResponder]) [self.answer resignFirstResponder];
+    }
+    [super touchesBegan: touches withEvent: event];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -54,46 +61,65 @@
 }
 
 - (IBAction)saveAnswer {
+    // Open a dialog with just an OK button.
+    NSString *actionTitle = NSLocalizedString(@"Are you sure you want to submit your answers?", @"");
+    NSString *cancelTitle = NSLocalizedString(@"Cancel", @"Cancel title for item removal action");
+    NSString *okTitle = NSLocalizedString(@"OK", @"OK title for item removal action");
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:actionTitle
+                                                             delegate:self
+                                                    cancelButtonTitle:cancelTitle
+                                               destructiveButtonTitle:okTitle
+                                                    otherButtonTitles:nil];
     
-
-    PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
-    [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
     
-   
-    PFQuery *matchQuestion = [PFQuery queryWithClassName:@"SurveyQuestion"];
-    [matchQuestion getObjectInBackgroundWithId:self.questionId block:^(PFObject *object, NSError *error) {
-        if (!error){
-            [queryAnswer whereKey:@"question" equalTo:object];
-            
-            if ([queryAnswer countObjects] == 0){
-                PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
-                [newAnswer setObject:[self.answer text] forKey:@"answer"];
-                [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
-                [newAnswer setObject:object forKey:@"question"];
-                [newAnswer setObject:[object objectId] forKey:@"questionId"];
-                [newAnswer saveInBackground];
-                self.answer.userInteractionEnabled = false;
-                self.navigationItem.rightBarButtonItem = self.reviseButton;
-                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
-                
-            } else if (self.reviseClicked) {
-                [queryAnswer getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
-                    object[@"answer"] =self.answer.text;
-                    [object saveInBackground];
-                    [object refresh];
-                }];
-                self.navigationItem.rightBarButtonItem = self.reviseButton;
-                self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
-                self.answer.userInteractionEnabled = false;
-                self.reviseClicked = NO;
-            } else {
-                UIAlertView *saved = [[UIAlertView alloc]initWithTitle:@"Warning" message: @"Your have already answered the question" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [saved show];
-            }
-        }
-    }];
 }
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // Show from our table view (pops up in the middle of the table).
+        [actionSheet showInView:self.view];
+        
+        
+        PFQuery *queryAnswer = [PFQuery queryWithClassName:@"AnswerInProgress"];
+        [queryAnswer whereKey:@"user" equalTo:[PFUser currentUser]];
+        
+        
+        PFQuery *matchQuestion = [PFQuery queryWithClassName:@"SurveyQuestion"];
+        [matchQuestion getObjectInBackgroundWithId:self.questionId block:^(PFObject *object, NSError *error) {
+            if (!error){
+                [queryAnswer whereKey:@"question" equalTo:object];
+                
+                if ([queryAnswer countObjects] == 0){
+                    PFObject *newAnswer = [PFObject objectWithClassName: @"AnswerInProgress"];
+                    [newAnswer setObject:[self.answer text] forKey:@"answer"];
+                    [newAnswer setObject:[PFUser currentUser] forKey:@"user"];
+                    [newAnswer setObject:object forKey:@"question"];
+                    [newAnswer setObject:[object objectId] forKey:@"questionId"];
+                    [newAnswer saveInBackground];
+                    self.answer.userInteractionEnabled = false;
+                    self.navigationItem.rightBarButtonItem = self.reviseButton;
+                    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
+                    
+                } else if (self.reviseClicked) {
+                    [queryAnswer getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+                        object[@"answer"] =self.answer.text;
+                        [object saveInBackground];
+                        [object refresh];
+                    }];
+                    self.navigationItem.rightBarButtonItem = self.reviseButton;
+                    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
+                    self.answer.userInteractionEnabled = false;
+                    self.reviseClicked = NO;
+                } else {
+                    UIAlertView *saved = [[UIAlertView alloc]initWithTitle:@"Warning" message: @"Your have already answered the question" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [saved show];
+                }
+            }
+        }];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 - (IBAction)cancel:(id)sender {
     self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem;
     self.navigationItem.rightBarButtonItem = self.reviseButton;

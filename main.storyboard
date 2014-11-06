@@ -344,11 +344,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rw8-KJ-KGx">
-                                <rect key="frame" x="14" y="199" width="287" height="31"/>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question displayed here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-xv-q4N">
                                 <rect key="frame" x="16" y="115" width="288" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="sliderText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-ne-Lty">
+                                <rect key="frame" x="79" y="281" width="138" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rw8-KJ-KGx">
+                                <rect key="frame" x="55" y="230" width="206" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="hH0-S1-J8n" eventType="valueChanged" id="EYU-Kt-4fM"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVU-rq-1iQ">
+                                <rect key="frame" x="26" y="234" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Max" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-ll-Ppj">
+                                <rect key="frame" x="267" y="234" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -362,7 +382,10 @@
                         <outlet property="cancelButton" destination="5lO-h2-ea4" id="Hie-aQ-WHp"/>
                         <outlet property="questionShow" destination="eWq-xv-q4N" id="i3r-gf-kdc"/>
                         <outlet property="reviseButton" destination="VfP-iw-0Lh" id="nGw-mv-SNe"/>
+                        <outlet property="sliderMax" destination="dgg-ll-Ppj" id="gXw-m8-7OM"/>
+                        <outlet property="sliderMin" destination="PVU-rq-1iQ" id="x6P-jh-a4U"/>
                         <outlet property="submitButton" destination="ioa-n3-82g" id="Ttl-uZ-hxG"/>
+                        <outlet property="textAnswer" destination="ckh-ne-Lty" id="fhp-Sf-Xx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ba-4P-sqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
