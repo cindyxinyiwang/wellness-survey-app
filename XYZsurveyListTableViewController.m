@@ -12,12 +12,14 @@
 #import "XYZsingleSelectViewController.h"
 #import "XYZmultiSelectTableViewController.h"
 #import "XYZrateViewController.h"
+#import "XYZtimeTableViewCell.h"
 #import <Parse/Parse.h>
 
 @interface XYZsurveyListTableViewController ()
 @property (strong, nonatomic) NSArray *questionEntries;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSArray *currentAnswers;
+@property (strong, nonatomic) NSArray *issueTime;
 ////////////////////////
 //problems:
 //1. how to set up a dictionary of the data stored in Parse(given the fact that findObject is synchronized and block main thread)
@@ -68,6 +70,15 @@
             [self.tableView reloadData];
         }
     }];
+    PFQuery *queryTime = [PFQuery queryWithClassName:@"IssueTime"];
+    [queryTime findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error){
+            
+        } else {
+            self.issueTime = objects;
+            [self.tableView reloadData];
+        }
+    }];
         
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,26 +102,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        // Return the number of sections.
-    return [self.categories count];
+        // Return the number of sections.Add one for expire date
+    return [self.categories count]+1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    PFObject *currentCategory = self.categories[section];
-    NSString *header = [currentCategory objectForKey:@"type"];
+    NSString *header;
+    if (section == 0){
+        //if it is the top section
+        header = @"Timeline";
+    } else {
+        PFObject *currentCategory = self.categories[section-1];
+        header = [currentCategory objectForKey:@"type"];
+    }
     return header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    PFObject *currentCategory = self.categories[section];
-    NSString *categoryName = [currentCategory objectForKey:@"type"];
     NSInteger counter = 0;
-    for (PFObject *q in self.questionEntries){
-        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
-            counter ++;
+    if (section == 0){
+        counter = 2;
+    } else {
+        PFObject *currentCategory = self.categories[section - 1];
+        NSString *categoryName = [currentCategory objectForKey:@"type"];
+        for (PFObject *q in self.questionEntries){
+            if([[q objectForKey:@"type"] isEqualToString:categoryName]){
+                counter ++;
+            }
         }
     }
     return counter;
@@ -120,19 +141,40 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
-
-    PFObject *currentCategory = self.categories[indexPath.section];
-    NSString *categoryName = [currentCategory objectForKey:@"type"];
-    NSMutableArray *aspects = [[NSMutableArray alloc]init];
-    for (PFObject *q in self.questionEntries){
-        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
-            [aspects addObject:[q objectForKey:@"aspect"]];
+    
+    if (indexPath.section == 0) {
+        PFObject *timeItem = self.issueTime[0];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+        NSDate *date = [NSDate date];
+        XYZtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timeCell"];
+        
+        if (indexPath.row == 0){
+            cell.timeTitleLabel.text = @"Issued at: ";
+            date = timeItem.updatedAt;
+            cell.timeSetupLabel.text = [dateFormatter stringFromDate:date];
+        } else {
+            cell.timeTitleLabel.text = @"Expire at: ";
+            date = [timeItem objectForKey:@"endDate"];
+            cell.timeSetupLabel.text = [dateFormatter stringFromDate:date];
         }
-    }
+        cell.timeSetupLabel.font = [UIFont systemFontOfSize:12.0];
+        return cell;
+    } else {
+        XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
+        PFObject *currentCategory = self.categories[indexPath.section - 1];
+        NSString *categoryName = [currentCategory objectForKey:@"type"];
+        NSMutableArray *aspects = [[NSMutableArray alloc]init];
+        for (PFObject *q in self.questionEntries){
+            if([[q objectForKey:@"type"] isEqualToString:categoryName]){
+                [aspects addObject:[q objectForKey:@"aspect"]];
+            }
+        }
 
-    cell.questionCategoryLabel.text = aspects[indexPath.row];
-    return cell;
+        cell.questionCategoryLabel.text = aspects[indexPath.row];
+        return cell;
+    }
 }
 
 
@@ -174,7 +216,9 @@
 }
 */
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PFObject *currentCategory = self.categories[indexPath.section];
+    if (indexPath.section == 0) return;
+    
+    PFObject *currentCategory = self.categories[indexPath.section - 1];
     NSString *categoryName = [currentCategory objectForKey:@"type"];
     NSMutableArray *answerType = [[NSMutableArray alloc]init];
     for (PFObject *q in self.questionEntries){
@@ -201,11 +245,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([self.tableView indexPathForSelectedRow].section == 0) return;
     
-    NSInteger sectionNumber = [self.tableView indexPathForSelectedRow].section;
+    NSInteger categoryNumber = [self.tableView indexPathForSelectedRow].section - 1;
     NSInteger rowNumber = [self.tableView indexPathForSelectedRow].row;
     
-    PFObject *currentCategory = self.categories[sectionNumber];
+    PFObject *currentCategory = self.categories[categoryNumber];
     NSString *categoryName = [currentCategory objectForKey:@"type"];
     NSMutableArray *currentQuestions = [[NSMutableArray alloc]init];
     NSMutableArray *questionIds = [[NSMutableArray alloc]init];

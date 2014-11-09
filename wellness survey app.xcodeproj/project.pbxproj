@@ -38,6 +38,7 @@
 		7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */; };
 		7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */; };
 		75A7A20219D3643C007EADCD /* XYZdetailQuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */; };
+		75B537EC1A0F2EC6009D5BD6 /* XYZtimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B537EB1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.m */; };
 		75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,8 @@
 		7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsurveyListTableViewController.m; sourceTree = "<group>"; };
 		75A7A20019D3643C007EADCD /* XYZdetailQuestionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZdetailQuestionTableViewController.h; sourceTree = "<group>"; };
 		75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZdetailQuestionTableViewController.m; sourceTree = "<group>"; };
+		75B537EA1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZtimeTableViewCell.h; sourceTree = "<group>"; };
+		75B537EB1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZtimeTableViewCell.m; sourceTree = "<group>"; };
 		75C1AF2C19D11C7C004F9B65 /* XYZsurveyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewCell.h; sourceTree = "<group>"; };
 		75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsurveyListTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +145,8 @@
 				75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */,
 				7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */,
 				7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */,
+				75B537EA1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.h */,
+				75B537EB1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.m */,
 				7564426719DE1B56001051BD /* LoginSignup */,
 				7500D56C19C0C60D003CF1E2 /* wellness survey app */,
 				7500D58519C0C60D003CF1E2 /* wellness survey appTests */,
@@ -349,6 +354,7 @@
 			files = (
 				7500D57719C0C60D003CF1E2 /* XYZAppDelegate.m in Sources */,
 				7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */,
+				75B537EC1A0F2EC6009D5BD6 /* XYZtimeTableViewCell.m in Sources */,
 				7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */,
 				75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */,
 				753715E219EA19B200B7C314 /* XYZrateViewController.m in Sources */,
