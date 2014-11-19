@@ -42,6 +42,7 @@
     }
 }
 //allow user to resign edit by clicking
+//keyboard goes away when touching screen
 - (void) touchesBegan: (NSSet *) touches withEvent: (UIEvent *) event {
     if (self.answer) {
         if ([self.answer canResignFirstResponder]) [self.answer resignFirstResponder];
@@ -60,7 +61,7 @@
     self.navigationItem.rightBarButtonItem = self.submitButton;
 }
 
-- (IBAction)saveAnswer {
+- (IBAction)saveAnswer:(id)sender {
     // Open a dialog with just an OK button.
     NSString *actionTitle = NSLocalizedString(@"Are you sure you want to submit your answers?", @"");
     NSString *cancelTitle = NSLocalizedString(@"Cancel", @"Cancel title for item removal action");
@@ -72,6 +73,8 @@
                                                     otherButtonTitles:nil];
     
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    // Show from our table view (pops up in the middle of the table).
+    [actionSheet showInView:self.view];
     
 }
 
@@ -117,6 +120,8 @@
                 }
             }
         }];
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.questionIndex, @"index", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteNotification" object:nil userInfo:dict];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
