@@ -166,6 +166,10 @@
                 }
             }
         }];
+        //notify list table view to delete this question
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.questionIndex, @"index", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteNotification" object:nil userInfo:dict];
+        
         [self.navigationController popViewControllerAnimated:YES];
         
     }

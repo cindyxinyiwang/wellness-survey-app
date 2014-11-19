@@ -11,5 +11,7 @@
 @interface XYZsurveyListTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *questionCategoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *questionAspectLabel;
+@property (weak, nonatomic) IBOutlet UILabel *questionExpireLabel;
 
 @end
