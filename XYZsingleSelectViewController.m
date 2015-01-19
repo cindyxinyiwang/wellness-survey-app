@@ -133,6 +133,7 @@
     return 1;
 }
 
+// Configure picker
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {

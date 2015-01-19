@@ -7,20 +7,28 @@
 //
 
 #import "XYZsurveyListTableViewController.h"
+#import "XYZquestionListTableViewController.h"
+/*
 #import "XYZsurveyListTableViewCell.h"
 #import "XYZdetailQuestionTableViewController.h"
 #import "XYZsingleSelectViewController.h"
 #import "XYZmultiSelectTableViewController.h"
 #import "XYZrateViewController.h"
 #import "XYZtimeTableViewCell.h"
+ */
+#import "XYZtypeTableViewCell.h"
 #import <Parse/Parse.h>
 
 @interface XYZsurveyListTableViewController ()
+@property (strong, nonatomic) NSArray *typeEntries;
+@property (strong, nonatomic) PFObject *selectedType;   //type entry selected by clicking
+
+/*
 @property (strong, nonatomic) NSMutableArray *questionEntries;
 @property (strong, nonatomic) NSArray *currentAnswers;
 //index of questionEntries that needs to be deleted
-@property (nonatomic) NSInteger deleteQuesIndex;
-/*
+//@property (nonatomic) NSInteger deleteQuesIndex;
+
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSArray *issueTime;
  */
@@ -59,41 +67,23 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.deleteQuesIndex = -1;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"SurveyQuestion"];
-    [query orderByAscending:@"createdAt"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Type"];
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error){
             
         } else {
-            self.questionEntries = [NSMutableArray arrayWithArray:objects];
-            [self updateQuestionEntries];
+            self.typeEntries = objects;
+            [self.tableView reloadData];
         }
     }];
-    //add notification for row delete
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setDeleteEntry:) name:@"DeleteNotification" object:nil];
     /*
-    PFQuery *queryCategory = [PFQuery queryWithClassName:@"Category"];
-    [queryCategory findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error){
-            
-        } else {
-            self.categories = objects;
-            [self.tableView reloadData];
-        }
-    }];
-    PFQuery *queryTime = [PFQuery queryWithClassName:@"IssueTime"];
-    [queryTime findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error){
-            
-        } else {
-            self.issueTime = objects;
-            [self.tableView reloadData];
-        }
-    }];
-    */
-}
+    //add notification for row delete
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setDeleteEntry:) name:@"DeleteNotification" object:nil]; */
+    }
+
+/*
 //receive notifications
 - (void) setDeleteEntry: (NSNotification *) notification {
     if ([[notification name] isEqualToString:@"DeleteNotification"]){
@@ -128,15 +118,12 @@
         }
     }];
 }
+*/
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    //if delete the row if deleteIndex is greater than 0
-    if (self.deleteQuesIndex >= 0){
-        [self.questionEntries removeObjectAtIndex:self.deleteQuesIndex];
-    }
-    //reset deleteRow value
-    self.deleteQuesIndex = -1;
+
+    [self.tableView reloadData];
     
 }
 - (void)didReceiveMemoryWarning
@@ -168,24 +155,9 @@
 */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    /*
+
     NSInteger counter = 0;
-    if (section == 0){
-        counter = 2;
-    } else {
-        PFObject *currentCategory = self.categories[section - 1];
-        NSString *categoryName = [currentCategory objectForKey:@"type"];
-        for (PFObject *q in self.questionEntries){
-            if([[q objectForKey:@"type"] isEqualToString:categoryName]){
-                counter ++;
-            }
-        }
-    }
-    return counter;
-     */
-    NSInteger counter = 0;
-    counter = [self.questionEntries count];
+    counter = [self.typeEntries count];
     return counter;
     
 }
@@ -193,54 +165,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    if (indexPath.section == 0) {
-        PFObject *timeItem = self.issueTime[0];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-        NSDate *date = [NSDate date];
-        XYZtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timeCell"];
-        
-        if (indexPath.row == 0){
-            cell.timeTitleLabel.text = @"Issued at: ";
-            date = timeItem.updatedAt;
-            cell.timeSetupLabel.text = [dateFormatter stringFromDate:date];
-        } else {
-            cell.timeTitleLabel.text = @"Expire at: ";
-            date = [timeItem objectForKey:@"endDate"];
-            cell.timeSetupLabel.text = [dateFormatter stringFromDate:date];
-        }
-        cell.timeSetupLabel.font = [UIFont systemFontOfSize:12.0];
-        return cell;
-    } else {
-     PFObject *currentCategory = self.categories[indexPath.section - 1];
-     NSString *categoryName = [currentCategory objectForKey:@"type"];
-     
-        XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
+    XYZtypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"typeCell" ];
+    PFObject *typeEntry = self.typeEntries[indexPath.row];
+    cell.typeLabel.text = [typeEntry objectForKey:@"typeName"];
     
-    
-        NSMutableArray *aspects = [[NSMutableArray alloc]init];
-        for (PFObject *q in self.questionEntries){
-            if([[q objectForKey:@"type"] isEqualToString:categoryName]){
-                [aspects addObject:[q objectForKey:@"aspect"]];
-            }
-        }
-        cell.questionCategoryLabel.text = aspects[indexPath.row];
-     */
-    XYZsurveyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" ];
-    PFObject *questionEntry = self.questionEntries[indexPath.row];
-    NSString *questionAspect = [questionEntry objectForKey:@"aspect"];
-    NSString *questionCategory = [questionEntry objectForKey:@"type"];
-    NSDate *endDate = [questionEntry objectForKey:@"endDate"];
-    //configure cell
-    cell.questionCategoryLabel.text = questionCategory;
-    cell.questionAspectLabel.text = questionAspect;
-    //cell displays how much time left for survey at the point of loading table view
-    NSTimeInterval secondsBetween = [endDate timeIntervalSinceNow];
-    int numberOfHours = secondsBetween / 3600;
-    NSString *expireHour = [NSString stringWithFormat:@"Expire in %d hours", numberOfHours];
-    cell.questionExpireLabel.text = expireHour;
     return cell;
 }
 
@@ -283,29 +211,14 @@
 }
 */
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*
-    if (indexPath.section == 0) return;
+    self.selectedType = [self.typeEntries objectAtIndex:indexPath.row];
+    if (self.selectedType != nil) {
+        [self performSegueWithIdentifier:@"toQuestionList" sender:self];
+    } else {
+        //error! could not retrieve type entry
+        
+    }
     
-    PFObject *currentCategory = self.categories[indexPath.section - 1];
-    NSString *categoryName = [currentCategory objectForKey:@"type"];
-    NSMutableArray *answerType = [[NSMutableArray alloc]init];
-    for (PFObject *q in self.questionEntries){
-        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
-            [answerType addObject:[q objectForKey:@"answerType"]];
-        }
-    }
-    NSString *type = answerType[indexPath.row];
-     */
-    NSString *type = [[self.questionEntries objectAtIndex:indexPath.row] objectForKey:@"answerType"];
-    if ([type isEqualToString:@"text"]) {
-        [self performSegueWithIdentifier:@"text" sender:self];
-    } else if ([type isEqualToString:@"singleSelect"]) {
-        [self performSegueWithIdentifier:@"singleSelect" sender:self];
-    } else if ([type isEqualToString:@"multiSelect"]) {
-        [self performSegueWithIdentifier:@"multiSelect" sender:self];
-    }   else if ([type isEqualToString:@"rate"]) {
-        [self performSegueWithIdentifier:@"rate" sender:self];
-    }
 }
 
 #pragma mark - Navigation
@@ -313,121 +226,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    /*
-    if ([self.tableView indexPathForSelectedRow].section == 0) return;
-    
-    NSInteger categoryNumber = [self.tableView indexPathForSelectedRow].section - 1;
-    NSInteger rowNumber = [self.tableView indexPathForSelectedRow].row;
-    
-    PFObject *currentCategory = self.categories[categoryNumber];
-    NSString *categoryName = [currentCategory objectForKey:@"type"];
-    NSMutableArray *currentQuestions = [[NSMutableArray alloc]init];
-    NSMutableArray *questionIds = [[NSMutableArray alloc]init];
-    for (PFObject *q in self.questionEntries){
-        if([[q objectForKey:@"type"] isEqualToString:categoryName]){
-            [currentQuestions addObject:[q objectForKey:@"Question"]];
-            [questionIds addObject:[q objectId]];
-            
-        }
+    if ([[segue identifier] isEqualToString:@"toQuestionList"]) {
+        XYZquestionListTableViewController *questionVC = segue.destinationViewController;
+        questionVC.type = self.selectedType;
     }
-    NSString *answerNow;
-    PFQuery *answerQuery = [PFQuery queryWithClassName:@"AnswerInProgress"];
-    [answerQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [answerQuery whereKey:@"questionId" equalTo:questionIds[rowNumber]];
-    for (PFObject *a in self.currentAnswers) {
-        if([[a objectForKey:@"questionId"] isEqualToString:questionIds[rowNumber]]){
-            answerNow = [a objectForKey:@"answer"];
-            
-        }
-    }
- 
-    if ([[segue identifier] isEqualToString:@"text"]) {
-        XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
-        questionVC.question = currentQuestions[rowNumber];
-        questionVC.questionId = questionIds[rowNumber];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        questionVC.prevAnswer = answerNow;
-
-    }
-    if ([[segue identifier] isEqualToString:@"rate"]) {
-        XYZrateViewController *questionVC = segue.destinationViewController;
-        questionVC.question = currentQuestions[rowNumber];
-        questionVC.questionId = questionIds[rowNumber];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        questionVC.prevAnswer = answerNow;
-        for (PFObject *q in self.questionEntries){
-            NSString *i = q.objectId ;
-            if ([i isEqualToString:questionIds[rowNumber]]){
-                questionVC.sliderConfig = [q objectForKey:@"config"];
-                break;
-            }
-        }
-
-    }
-    if ([[segue identifier] isEqualToString:@"multiSelect"]) {
-        XYZmultiSelectTableViewController *questionVC = segue.destinationViewController;
-        questionVC.question = currentQuestions[rowNumber];
-        questionVC.questionId = questionIds[rowNumber];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        for (PFObject *q in self.questionEntries){
-            NSString *i = q.objectId ;
-            if ([i isEqualToString:questionIds[rowNumber]]){
-                questionVC.pickerData = [q objectForKey:@"config"];
-                break;
-            }
-        }
-        
-    }
-    if ([[segue identifier] isEqualToString:@"singleSelect"]) {
-        XYZsingleSelectViewController *questionVC = segue.destinationViewController;
-        questionVC.question = currentQuestions[rowNumber];
-        questionVC.questionId = questionIds[rowNumber];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        for (PFObject *q in self.questionEntries){
-            NSString *i = q.objectId ;
-            if ([i isEqualToString:questionIds[rowNumber]]){
-                questionVC.pickerData = [q objectForKey:@"config"];
-                break;
-            }
-        }
-        questionVC.prevAnswer = answerNow;
-        
-    }
-     */
-    NSInteger rowNumber = [self.tableView indexPathForSelectedRow].row;
-    if ([[segue identifier] isEqualToString:@"text"]) {
-        XYZdetailQuestionTableViewController *questionVC = segue.destinationViewController;
-        questionVC.question = [self.questionEntries[rowNumber] objectForKey:@"Question"];
-        questionVC.questionId = [self.questionEntries[rowNumber] objectId];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-    }
-    if ([[segue identifier] isEqualToString:@"rate"]) {
-        XYZrateViewController *questionVC = segue.destinationViewController;
-        questionVC.question = [self.questionEntries[rowNumber] objectForKey:@"Question"];
-        questionVC.questionId = [self.questionEntries[rowNumber] objectId];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        questionVC.sliderConfig = [self.questionEntries[rowNumber] objectForKey:@"config"];
-        
-    }
-    if ([[segue identifier] isEqualToString:@"multiSelect"]) {
-        XYZmultiSelectTableViewController *questionVC = segue.destinationViewController;
-        questionVC.question = [self.questionEntries[rowNumber] objectForKey:@"Question"];
-        questionVC.questionId = [self.questionEntries[rowNumber] objectId];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        questionVC.pickerData = [self.questionEntries[rowNumber] objectForKey:@"config"];
-        
-    }
-    if ([[segue identifier] isEqualToString:@"singleSelect"]) {
-        XYZsingleSelectViewController *questionVC = segue.destinationViewController;
-        questionVC.question = [self.questionEntries[rowNumber] objectForKey:@"Question"];
-        questionVC.questionId = [self.questionEntries[rowNumber] objectId];
-        questionVC.questionIndex = [NSString stringWithFormat:@"%d",(int)rowNumber+1];
-        questionVC.pickerData = [self.questionEntries[rowNumber] objectForKey:@"config"];
-        
-    }
-
 }
 
 
