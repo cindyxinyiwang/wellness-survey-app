@@ -142,60 +142,6 @@
             </objects>
             <point key="canvasLocation" x="847" y="986"/>
         </scene>
-        <!--Zsingle Select View Controller-->
-        <scene sceneID="zhd-5M-dXo">
-            <objects>
-                <viewController id="e6O-q9-R05" customClass="XYZsingleSelectViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="csm-nj-pXj"/>
-                        <viewControllerLayoutGuide type="bottom" id="UdK-F2-mp2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ua2-9I-2aC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-CL-HZo">
-                                <rect key="frame" x="0.0" y="149" width="320" height="162"/>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question display here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1t-7e-7dC">
-                                <rect key="frame" x="16" y="125" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="efb-L9-ARk"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="cancelButton" destination="heQ-KA-ZMv" id="0fc-wl-hN4"/>
-                        <outlet property="picker" destination="wxi-CL-HZo" id="NGi-X2-S3g"/>
-                        <outlet property="questionShow" destination="Z1t-7e-7dC" id="b2P-AZ-iwg"/>
-                        <outlet property="reviseButton" destination="7XF-CD-yDW" id="WaL-e3-KIi"/>
-                        <outlet property="submitButton" destination="SMw-Cj-bsg" id="58i-FP-tpu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w6h-hu-DtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem title="Submit" id="SMw-Cj-bsg">
-                    <connections>
-                        <action selector="saveAnswer:" destination="e6O-q9-R05" id="MOQ-JM-Cac"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Revise" id="7XF-CD-yDW">
-                    <connections>
-                        <action selector="revise:" destination="e6O-q9-R05" id="gu8-cX-ZVZ"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Cancel" id="heQ-KA-ZMv">
-                    <connections>
-                        <action selector="cancel:" destination="e6O-q9-R05" id="30u-lM-g3A"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="1392" y="-1521"/>
-        </scene>
         <!--Zsurvey List Table View Controller-->
         <scene sceneID="Qnc-mM-h3h">
             <objects>
@@ -309,10 +255,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="a0J-lO-2Pe" kind="push" identifier="text" id="YnS-w8-9I5"/>
-                        <segue destination="hH0-S1-J8n" kind="push" identifier="rate" id="e9n-Uc-JcX"/>
-                        <segue destination="e6O-q9-R05" kind="push" identifier="singleSelect" id="xqm-aY-prp"/>
-                        <segue destination="k0K-Gx-KcL" kind="push" identifier="multiSelect" id="X0z-bt-HTA"/>
                         <segue destination="kbP-Kf-Xkg" kind="push" identifier="toQuestionList" id="PZm-pg-faO"/>
                     </connections>
                 </tableViewController>
@@ -456,209 +398,6 @@
             </objects>
             <point key="canvasLocation" x="1380" y="-189"/>
         </scene>
-        <!--Zdetail Question Table View Controller-->
-        <scene sceneID="8wE-eJ-Yia">
-            <objects>
-                <tableViewController id="a0J-lO-2Pe" customClass="XYZdetailQuestionTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qoe-UP-83J">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="5eE-Ky-Gdu">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailQuestionCell" textLabel="qZd-eB-vBf" rowHeight="62" style="IBUITableViewCellStyleDefault" id="mvA-kb-Oqj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mvA-kb-Oqj" id="0en-Xd-RJZ">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Question displayed here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qZd-eB-vBf">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="answerCell" rowHeight="437" id="U3Z-pT-SAC">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3Z-pT-SAC" id="fWj-74-6y3">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your answer here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H2b-Oc-cpw">
-                                                    <rect key="frame" x="17" y="41" width="286" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="a0J-lO-2Pe" id="3Vg-lH-QmL"/>
-                            <outlet property="delegate" destination="a0J-lO-2Pe" id="EF7-Th-ETS"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="WcQ-HU-fjy"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
-                    <connections>
-                        <outlet property="answer" destination="H2b-Oc-cpw" id="6Cw-t1-DDq"/>
-                        <outlet property="cancelButton" destination="pbs-BK-b95" id="Geq-Nf-6Vp"/>
-                        <outlet property="questionListed" destination="qZd-eB-vBf" id="xCr-92-8wY"/>
-                        <outlet property="reviseButton" destination="o30-Wp-Vqc" id="Hda-bm-2xk"/>
-                        <outlet property="submitButton" destination="Kmq-pF-MAh" id="G2O-0A-zJ9"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ryK-Gt-uKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem title="Submit" id="Kmq-pF-MAh">
-                    <connections>
-                        <action selector="saveAnswer:" destination="a0J-lO-2Pe" id="VEy-wR-abY"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Revise" id="o30-Wp-Vqc">
-                    <connections>
-                        <action selector="editAnswer:" destination="a0J-lO-2Pe" id="DcH-pf-V34"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Cancel" id="pbs-BK-b95">
-                    <connections>
-                        <action selector="cancel:" destination="a0J-lO-2Pe" id="9Ot-xt-Z54"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="1302" y="-1529"/>
-        </scene>
-        <!--Zrate View Controller-->
-        <scene sceneID="zxx-UK-aD1">
-            <objects>
-                <viewController id="hH0-S1-J8n" customClass="XYZrateViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zR0-lx-kcd"/>
-                        <viewControllerLayoutGuide type="bottom" id="JUr-zE-25s"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LEu-cU-v0U">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question displayed here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-xv-q4N">
-                                <rect key="frame" x="16" y="115" width="288" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="sliderText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-ne-Lty">
-                                <rect key="frame" x="79" y="281" width="138" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rw8-KJ-KGx">
-                                <rect key="frame" x="55" y="230" width="206" height="31"/>
-                                <connections>
-                                    <action selector="sliderValueChanged:" destination="hH0-S1-J8n" eventType="valueChanged" id="EYU-Kt-4fM"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVU-rq-1iQ">
-                                <rect key="frame" x="26" y="234" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Max" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-ll-Ppj">
-                                <rect key="frame" x="267" y="234" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ghc-zG-Mse"/>
-                    <connections>
-                        <outlet property="answer" destination="rw8-KJ-KGx" id="E8C-yC-suh"/>
-                        <outlet property="cancelButton" destination="5lO-h2-ea4" id="Hie-aQ-WHp"/>
-                        <outlet property="questionShow" destination="eWq-xv-q4N" id="i3r-gf-kdc"/>
-                        <outlet property="reviseButton" destination="VfP-iw-0Lh" id="nGw-mv-SNe"/>
-                        <outlet property="sliderMax" destination="dgg-ll-Ppj" id="gXw-m8-7OM"/>
-                        <outlet property="sliderMin" destination="PVU-rq-1iQ" id="x6P-jh-a4U"/>
-                        <outlet property="submitButton" destination="ioa-n3-82g" id="Ttl-uZ-hxG"/>
-                        <outlet property="textAnswer" destination="ckh-ne-Lty" id="fhp-Sf-Xx1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ba-4P-sqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem title="Submit" id="ioa-n3-82g">
-                    <connections>
-                        <action selector="submit:" destination="hH0-S1-J8n" id="GYV-GE-aJ4"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Revise" id="VfP-iw-0Lh">
-                    <connections>
-                        <action selector="revise:" destination="hH0-S1-J8n" id="D0A-ux-M59"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Cancel" id="5lO-h2-ea4">
-                    <connections>
-                        <action selector="cancel:" destination="hH0-S1-J8n" id="JVn-6t-1jq"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="1282" y="-1475"/>
-        </scene>
-        <!--Zmulti Select Table View Controller-->
-        <scene sceneID="Aec-PR-jDi">
-            <objects>
-                <tableViewController id="k0K-Gx-KcL" customClass="XYZmultiSelectTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="BbG-O2-2zx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="cellID" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" rowHeight="76" id="v6t-7O-JUI">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v6t-7O-JUI" id="1ZY-p4-lY7">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="k0K-Gx-KcL" id="Rp1-ml-1xO"/>
-                            <outlet property="delegate" destination="k0K-Gx-KcL" id="F15-7i-HX0"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="ycq-bT-36p"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="cancelButton" destination="AUg-Ap-VcF" id="WTa-OM-3ar"/>
-                        <outlet property="reviseButton" destination="i0q-4d-ajY" id="1dV-Bn-TFY"/>
-                        <outlet property="submitButton" destination="12C-06-6fo" id="kE8-J4-kEz"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G8Q-bE-hoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem title="Cancel" id="AUg-Ap-VcF">
-                    <connections>
-                        <action selector="cancel:" destination="k0K-Gx-KcL" id="iZa-qW-mmO"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Submit" id="12C-06-6fo">
-                    <connections>
-                        <action selector="submit:" destination="k0K-Gx-KcL" id="cwe-6W-9kc"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="Revise" id="i0q-4d-ajY">
-                    <connections>
-                        <action selector="revise:" destination="k0K-Gx-KcL" id="w8n-gy-2jT"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="1275" y="-1341"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Fr-IT-8Xl">
             <objects>
@@ -715,43 +454,6 @@
             <point key="canvasLocation" x="223" y="-666"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Jml-ng-1ig">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="826-SA-9wO" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hSL-NH-qlj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="a0J-lO-2Pe" kind="relationship" relationship="rootViewController" id="N2Y-0u-asP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PAf-F9-CdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="622" y="-1671"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="G4E-rx-rXI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="USF-M3-wUK" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="1ZQ-VP-NC7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXE-kT-y7u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="hH0-S1-J8n" kind="relationship" relationship="rootViewController" id="CZn-5A-jEP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ay-zo-PnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1918" y="-1367"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="3EE-Hu-Upo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GbL-tf-8eL" sceneMemberID="viewController">
@@ -761,9 +463,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="e6O-q9-R05" kind="relationship" relationship="rootViewController" id="pbT-xE-WfF"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMx-6f-5sM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -780,9 +479,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="k0K-Gx-KcL" kind="relationship" relationship="rootViewController" id="6S3-mj-gxc"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo1-Gu-oLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -813,11 +509,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xqm-aY-prp"/>
         <segue reference="7Xv-lp-LUm"/>
-        <segue reference="e9n-Uc-JcX"/>
-        <segue reference="X0z-bt-HTA"/>
-        <segue reference="N2Y-0u-asP"/>
         <segue reference="bh2-jO-ugb"/>
     </inferredMetricsTieBreakers>
 </document>

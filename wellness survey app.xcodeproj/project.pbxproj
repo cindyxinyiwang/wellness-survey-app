@@ -31,9 +31,6 @@
 		7500D5AB19C0C6AD003CF1E2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A219C0C6AD003CF1E2 /* StoreKit.framework */; };
 		7500D5AC19C0C6AD003CF1E2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500D5A319C0C6AD003CF1E2 /* SystemConfiguration.framework */; };
 		7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */; };
-		753715E219EA19B200B7C314 /* XYZrateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715E119EA19B200B7C314 /* XYZrateViewController.m */; };
-		753715E819EA2DA000B7C314 /* XYZsingleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715E719EA2DA000B7C314 /* XYZsingleSelectViewController.m */; };
-		753715EB19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */; };
 		7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */; };
 		7564DB7119C9F92A0033C6FC /* XYZsurveyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7564DB7019C9F92A0033C6FC /* XYZsurveyListTableViewController.m */; };
 		75A16D0A1A68761400E3C20C /* XYZtypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A16D091A68761400E3C20C /* XYZtypeTableViewCell.m */; };
@@ -44,7 +41,6 @@
 		75A16D1B1A6947E900E3C20C /* XYZselectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A16D1A1A6947E900E3C20C /* XYZselectTableViewCell.m */; };
 		75A16D1E1A6B3DC900E3C20C /* XYZquestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A16D1D1A6B3DC900E3C20C /* XYZquestionTableViewCell.m */; };
 		75A16D201A6D738700E3C20C /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A16D1F1A6D738700E3C20C /* main.storyboard */; };
-		75A7A20219D3643C007EADCD /* XYZdetailQuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */; };
 		75B537EC1A0F2EC6009D5BD6 /* XYZtimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B537EB1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.m */; };
 		75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -89,12 +85,6 @@
 		7500D5A319C0C6AD003CF1E2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7500D5AD19C0DC29003CF1E2 /* XYZsignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsignupViewController.h; sourceTree = "<group>"; };
 		7500D5AE19C0DC29003CF1E2 /* XYZsignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsignupViewController.m; sourceTree = "<group>"; };
-		753715E019EA19B200B7C314 /* XYZrateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZrateViewController.h; sourceTree = "<group>"; };
-		753715E119EA19B200B7C314 /* XYZrateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZrateViewController.m; sourceTree = "<group>"; };
-		753715E619EA2DA000B7C314 /* XYZsingleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsingleSelectViewController.h; sourceTree = "<group>"; };
-		753715E719EA2DA000B7C314 /* XYZsingleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZsingleSelectViewController.m; sourceTree = "<group>"; };
-		753715E919EDE95D00B7C314 /* XYZmultiSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZmultiSelectTableViewController.h; sourceTree = "<group>"; };
-		753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZmultiSelectTableViewController.m; sourceTree = "<group>"; };
 		7564DB6619C0E7AB0033C6FC /* XYZloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZloginViewController.h; sourceTree = "<group>"; };
 		7564DB6719C0E7AB0033C6FC /* XYZloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZloginViewController.m; sourceTree = "<group>"; };
 		7564DB6F19C9F9290033C6FC /* XYZsurveyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewController.h; sourceTree = "<group>"; };
@@ -114,8 +104,6 @@
 		75A16D1C1A6B3DC900E3C20C /* XYZquestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZquestionTableViewCell.h; sourceTree = "<group>"; };
 		75A16D1D1A6B3DC900E3C20C /* XYZquestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZquestionTableViewCell.m; sourceTree = "<group>"; };
 		75A16D1F1A6D738700E3C20C /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
-		75A7A20019D3643C007EADCD /* XYZdetailQuestionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZdetailQuestionTableViewController.h; sourceTree = "<group>"; };
-		75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZdetailQuestionTableViewController.m; sourceTree = "<group>"; };
 		75B537EA1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZtimeTableViewCell.h; sourceTree = "<group>"; };
 		75B537EB1A0F2EC5009D5BD6 /* XYZtimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZtimeTableViewCell.m; sourceTree = "<group>"; };
 		75C1AF2C19D11C7C004F9B65 /* XYZsurveyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZsurveyListTableViewCell.h; sourceTree = "<group>"; };
@@ -160,7 +148,7 @@
 		7500D55A19C0C60D003CF1E2 = {
 			isa = PBXGroup;
 			children = (
-				753715DF19EA16EE00B7C314 /* answerScene */,
+				75A16D1F1A6D738700E3C20C /* main.storyboard */,
 				75C1AF2C19D11C7C004F9B65 /* XYZsurveyListTableViewCell.h */,
 				75C1AF2D19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m */,
 				75A16D0E1A68BBD200E3C20C /* typeList */,
@@ -244,22 +232,6 @@
 				7500D58819C0C60D003CF1E2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		753715DF19EA16EE00B7C314 /* answerScene */ = {
-			isa = PBXGroup;
-			children = (
-				75A16D1F1A6D738700E3C20C /* main.storyboard */,
-				753715E919EDE95D00B7C314 /* XYZmultiSelectTableViewController.h */,
-				753715EA19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m */,
-				753715E619EA2DA000B7C314 /* XYZsingleSelectViewController.h */,
-				753715E719EA2DA000B7C314 /* XYZsingleSelectViewController.m */,
-				753715E019EA19B200B7C314 /* XYZrateViewController.h */,
-				753715E119EA19B200B7C314 /* XYZrateViewController.m */,
-				75A7A20119D3643C007EADCD /* XYZdetailQuestionTableViewController.m */,
-				75A7A20019D3643C007EADCD /* XYZdetailQuestionTableViewController.h */,
-			);
-			name = answerScene;
 			sourceTree = "<group>";
 		};
 		7564426719DE1B56001051BD /* LoginSignup */ = {
@@ -412,15 +384,11 @@
 				7500D5AF19C0DC29003CF1E2 /* XYZsignupViewController.m in Sources */,
 				75C1AF2E19D11C7C004F9B65 /* XYZsurveyListTableViewCell.m in Sources */,
 				75A16D1B1A6947E900E3C20C /* XYZselectTableViewCell.m in Sources */,
-				753715E219EA19B200B7C314 /* XYZrateViewController.m in Sources */,
 				75A16D121A68C09000E3C20C /* XYZpromptTableViewCell.m in Sources */,
 				7564DB6819C0E7AB0033C6FC /* XYZloginViewController.m in Sources */,
 				7500D57319C0C60D003CF1E2 /* main.m in Sources */,
-				753715EB19EDE95D00B7C314 /* XYZmultiSelectTableViewController.m in Sources */,
 				75A16D0A1A68761400E3C20C /* XYZtypeTableViewCell.m in Sources */,
 				75A16D151A68C21000E3C20C /* XYZsliderTableViewCell.m in Sources */,
-				75A7A20219D3643C007EADCD /* XYZdetailQuestionTableViewController.m in Sources */,
-				753715E819EA2DA000B7C314 /* XYZsingleSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
