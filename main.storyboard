@@ -240,26 +240,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="question" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-Q5-1qu">
-                                            <rect key="frame" x="8" y="0.0" width="166" height="51"/>
+                                            <rect key="frame" x="8" y="8" width="166" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="answer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQe-RY-qBn">
-                                            <rect key="frame" x="209" y="0.0" width="103" height="51"/>
+                                            <rect key="frame" x="209" y="7" width="103" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="yQe-RY-qBn" firstAttribute="top" secondItem="XE8-6Z-5yr" secondAttribute="topMargin" constant="5" id="EqT-n4-TyL"/>
-                                        <constraint firstItem="jwP-Q5-1qu" firstAttribute="top" secondItem="XE8-6Z-5yr" secondAttribute="topMargin" constant="5" id="eIj-wJ-Upm"/>
-                                        <constraint firstItem="yQe-RY-qBn" firstAttribute="trailing" secondItem="XE8-6Z-5yr" secondAttribute="trailingMargin" constant="5" id="h2y-Sh-QGG"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jwP-Q5-1qu" secondAttribute="bottom" constant="5" id="k3t-Lz-Tmi"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="yQe-RY-qBn" secondAttribute="bottom" constant="5" id="kbd-Be-Dv8"/>
-                                        <constraint firstItem="jwP-Q5-1qu" firstAttribute="leading" secondItem="XE8-6Z-5yr" secondAttribute="leadingMargin" constant="5" id="obe-Ww-c7R"/>
-                                        <constraint firstItem="yQe-RY-qBn" firstAttribute="leading" secondItem="jwP-Q5-1qu" secondAttribute="trailing" id="sZe-DN-S4U"/>
+                                        <constraint firstItem="yQe-RY-qBn" firstAttribute="leading" secondItem="jwP-Q5-1qu" secondAttribute="trailing" constant="5" id="1Zo-RN-E4k"/>
+                                        <constraint firstItem="jwP-Q5-1qu" firstAttribute="top" secondItem="XE8-6Z-5yr" secondAttribute="topMargin" constant="5" id="Pzq-5J-AUQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yQe-RY-qBn" secondAttribute="bottom" constant="5" id="Z4N-MF-qqi"/>
+                                        <constraint firstItem="jwP-Q5-1qu" firstAttribute="leading" secondItem="XE8-6Z-5yr" secondAttribute="leadingMargin" constant="5" id="deT-py-aie"/>
+                                        <constraint firstItem="yQe-RY-qBn" firstAttribute="trailing" secondItem="XE8-6Z-5yr" secondAttribute="trailingMargin" constant="5" id="mC0-gB-6ok"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jwP-Q5-1qu" secondAttribute="bottom" constant="5" id="s8t-uc-c0n"/>
+                                        <constraint firstItem="yQe-RY-qBn" firstAttribute="top" secondItem="XE8-6Z-5yr" secondAttribute="topMargin" constant="5" id="scB-Et-tjE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -336,7 +336,7 @@
                     </state>
                 </button>
             </objects>
-            <point key="canvasLocation" x="1380" y="-189"/>
+            <point key="canvasLocation" x="1144" y="-214"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Fr-IT-8Xl">

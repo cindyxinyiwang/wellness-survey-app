@@ -71,6 +71,7 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(triggerAction:) name:@"NotificationMessageEvent" object:nil];
     
+    self.questionAnswerPairs = [NSMutableDictionary new];
     }
 
 
@@ -86,7 +87,7 @@
         questionCell.answer.text = message; */
         
         NSInteger questionEntryIndex = self.inlineCellIndexPath.row - 2;
-        [self.questionAnswerPairs setValue:message forKey:[NSString stringWithFormat:@"%ld", (long)questionEntryIndex]];
+        [self.questionAnswerPairs setObject:message forKey:[NSString stringWithFormat:@"%ld", (long)questionEntryIndex]];
         
         [self.tableView reloadData];
         
@@ -191,7 +192,9 @@
             
         
             selectCell.myPicker = [[UIPickerView alloc] init];
+            
             selectCell.pickerData = [questionEntry objectForKey:@"config"];
+            
 
             return selectCell;
             
@@ -246,11 +249,11 @@
     return hasInlineCell;
 }
 
-/*! Adds or removes a UIDatePicker cell below the given indexPath.
+/*! Adds or removes a inline cell below the given indexPath.
  
- @param indexPath The indexPath to reveal the UIDatePicker.
+ @param indexPath The indexPath to reveal the inline cell.
  */
-- (void)toggleDatePickerForSelectedIndexPath:(NSIndexPath *)indexPath
+- (void)toggleInlineCellForSelectedIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView beginUpdates];
     
@@ -265,6 +268,8 @@
     }
     else
     {
+        
+  
         // didn't find a picker below it, so we should insert it
         [self.tableView insertRowsAtIndexPaths:indexPaths
                               withRowAnimation:UITableViewRowAnimationFade];
@@ -305,7 +310,10 @@
         NSInteger rowToReveal = (before ? indexPath.row - 1 : indexPath.row);
         NSIndexPath *indexPathToReveal = [NSIndexPath indexPathForRow:rowToReveal inSection:0];
         
-        [self toggleDatePickerForSelectedIndexPath:indexPathToReveal];
+        [self toggleInlineCellForSelectedIndexPath:indexPathToReveal];
+        //picker data not updated?
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathToReveal, nil] withRowAnimation:UITableViewRowAnimationNone];
+        
         self.inlineCellIndexPath = [NSIndexPath indexPathForRow:indexPathToReveal.row + 1 inSection:0];
     }
     
@@ -318,27 +326,6 @@
     //[self updateDatePicker];
 }
 
--(IBAction)pickerAction:(id)sender {
-    NSIndexPath *targetedCellIndexPath = nil;
-    
-    if ([self hasInlineCell])
-    {
-        // inline date picker: update the cell's date "above" the date picker cell
-        //
-        targetedCellIndexPath = [NSIndexPath indexPathForRow:self.inlineCellIndexPath.row - 1 inSection:0];
-    }
-    
-    XYZselectTableViewCell *pickerCell = [self.tableView cellForRowAtIndexPath:self.inlineCellIndexPath];
-    XYZquestionTableViewCell *questionCell = [self.tableView cellForRowAtIndexPath:targetedCellIndexPath];
-    
-    UIDatePicker *targetedDatePicker = sender;
-    
-    // update our data model
-    
-    
-    // update the cell's date string
-    questionCell.answer.text = [pickerCell.pickerData objectAtIndex:pickerCell.selectedIndex];
-}
 
 #pragma mark - UITableViewDelegate
 
